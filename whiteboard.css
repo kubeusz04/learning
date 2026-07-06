@@ -915,6 +915,9 @@
 }
 .home-link:hover { color: var(--marker-blue); background: rgba(255,255,255,.5); }
 .exercise.exercise-done { opacity: .94; }
+.exercise.exercise-done .exercise-score {
+  padding-right: 1.35rem;
+}
 .exercise.exercise-done::after {
   content: '✓';
   position: absolute;

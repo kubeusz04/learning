@@ -9,9 +9,28 @@
   const LESSONS = [
     { id: 'pl-1', title: 'Polish L1 — Compliments', href: 'index.html', track: 'Polish', total: 20, practice: 'index.html', theory: 'lesson-1-theory.html' },
     { id: 'pl-2', title: 'Polish L2 — Feelings & się', href: 'lesson-2.html', track: 'Polish', total: 20, practice: 'lesson-2.html', theory: 'lesson-2-theory.html' },
+    { id: 'pl-3', title: 'Polish L3 — Hugs', href: 'lesson-3.html', track: 'Polish', total: 20, practice: 'lesson-3.html', theory: 'lesson-3-theory.html' },
     { id: 'ko-1', title: 'Korean L1 — Topic marker', href: 'Korean/index.html', track: 'Korean', total: 20, practice: 'Korean/index.html', theory: 'Korean/lesson-1-theory.html' },
-    { id: 'ko-2', title: 'Korean L2 — Happy & 너무', href: 'Korean/lesson-2.html', track: 'Korean', total: 20, practice: 'Korean/lesson-2.html', theory: 'Korean/lesson-2-theory.html' }
+    { id: 'ko-2', title: 'Korean L2 — Happy & 너무', href: 'Korean/lesson-2.html', track: 'Korean', total: 20, practice: 'Korean/lesson-2.html', theory: 'Korean/lesson-2-theory.html' },
+    { id: 'ko-3', title: 'Korean L3 — Hugs', href: 'Korean/lesson-3.html', track: 'Korean', total: 20, practice: 'Korean/lesson-3.html', theory: 'Korean/lesson-3-theory.html' }
   ];
+
+  const PRAISES = [
+    'Great!',
+    'You are so good at it!',
+    'I am so proud of you!',
+    'Good job!',
+    'Awesome!',
+    'Well done!',
+    'Fantastic!',
+    'Keep it up!',
+    'Brilliant!',
+    'You nailed it!'
+  ];
+
+  function randomPraise() {
+    return PRAISES[Math.floor(Math.random() * PRAISES.length)];
+  }
 
   function storageKey(lessonId) {
     return PREFIX + lessonId;
@@ -98,7 +117,7 @@
 
       const scoreEl = document.getElementById('score' + num);
       if (scoreEl && !scoreEl.classList.contains('correct')) {
-        scoreEl.textContent = '✓ Done';
+        scoreEl.textContent = randomPraise();
         scoreEl.className = 'exercise-score correct';
       }
 
@@ -151,5 +170,5 @@
     return LESSONS.find((l) => l.id === id);
   }
 
-  global.LessonProgress = { create, load, getAllLessons, getLastLessonId, getLesson, LESSONS };
+  global.LessonProgress = { create, load, getAllLessons, getLastLessonId, getLesson, LESSONS, randomPraise };
 })(typeof window !== 'undefined' ? window : globalThis);

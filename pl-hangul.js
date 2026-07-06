@@ -16,6 +16,10 @@
   };
 
   const DIGRAPHS = [
+    ['chcę', 'ㅎㅊㅔ'],
+    ['chce', 'ㅎㅊㅔ'],
+    ['chci', 'ㅎㅊㅣ'],
+    ['chc', 'ㅎㅊ'],
     ['szcz', 'szㅊ'],
     ['sz', 'sz'],
     ['cz', 'ㅊ'],
@@ -72,7 +76,7 @@
 
   function isPolishWord(word) {
     if (POLISH_HINT.test(word)) return true;
-    return /^(tak|taka|taki|takie|zbyt|za|się|sie|bardzo|właśnie|wlascie|naj|jest|jestem|jesteś|jestes|czy|dziś|dzis|pogoda|gorąco|goraco|zimno|idealna|idealny|okropna|cudown|wspaniał|wspanial|perfekcyj|szczęśliw|szczesliw|cieszę|ciesze|czeszę|czesze|partykuł|partykul|niesamowit|piękn|piekn|najlepsz|najbardziej|wszechświat|wszechswiat|świat|swiat|ty|ja|na)$/i.test(word);
+    return /^(tak|taka|taki|takie|zbyt|za|się|sie|bardzo|właśnie|wlascie|naj|jest|jestem|jesteś|jestes|czy|dziś|dzis|pogoda|gorąco|goraco|zimno|idealna|idealny|idealne|przytul|tulę|tule|chcę|chce|mnie|cię|cie|okropna|cudown|wspaniał|wspanial|szczęśliw|szczesliw|cieszę|ciesze|czeszę|czesze|partykuł|partykul|niesamowit|piękn|piekn|najlepsz|najbardziej|wszechświat|wszechswiat|świat|swiat|ty|ja|na)$/i.test(word);
   }
 
   function isPolishText(text) {
@@ -102,7 +106,17 @@
       const ch = s[i];
       const next = s[i + 1] || '';
 
-      if (ch === 'c' && (next === 'e' || next === 'i')) {
+      if (ch === 'c' && (next === 'e' || next === 'i' || next === 'ę')) {
+        if (next === 'i') {
+          out += 'c';
+          i++;
+          continue;
+        }
+        if (next === 'ę') {
+          out += 'ㅊ';
+          i++;
+          continue;
+        }
         out += 'c';
         i++;
         continue;

@@ -1,0 +1,61 @@
+.font-size-control {
+  position: fixed;
+  top: .75rem;
+  right: .75rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: .15rem;
+  padding: .25rem .35rem;
+  background: rgba(244, 241, 232, .95);
+  border: 2px solid rgba(107, 76, 48, .35);
+  border-radius: 4px;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, .2);
+  font-family: 'Patrick Hand', 'Kalam', cursive;
+}
+
+.font-size-control button {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 2px solid rgba(0, 0, 0, .12);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, .85);
+  color: var(--ink, #2a2a2a);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color .15s, background .15s, opacity .15s;
+}
+
+.font-size-control button:hover:not(:disabled) {
+  border-color: var(--marker-blue, #1a56db);
+  background: white;
+}
+
+.font-size-control button:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.font-size-control button[data-action="larger"] {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.font-size-value {
+  min-width: 2.75rem;
+  text-align: center;
+  font-size: .85rem;
+  color: var(--muted, #5c5c5c);
+  user-select: none;
+}
+
+@media (max-width: 480px) {
+  .font-size-control {
+    top: auto;
+    bottom: .75rem;
+    right: .5rem;
+  }
+}
