@@ -98,6 +98,11 @@
 
   /* ─── Polish → Hangul (reverse of syllableToPolish) ─── */
 
+  const POLISH_WORD_HANGUL = {
+    chcę: '헤체',
+    chce: '헤체'
+  };
+
   const POLISH_IV = [
     ['ła', 'ㅇ', 'ㅘ'],
     ['ło', 'ㅇ', 'ㅝ'],
@@ -218,6 +223,8 @@
   function polishWordToHangul(word) {
     if (!word) return '';
     const s = word.toLowerCase();
+    if (POLISH_WORD_HANGUL[s]) return POLISH_WORD_HANGUL[s];
+
     let out = '';
     let i = 0;
 
