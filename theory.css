@@ -1,0 +1,131 @@
+/* Theory pages — additions on top of whiteboard.css */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  color: var(--marker-blue);
+  text-decoration: none;
+  margin-bottom: 1rem;
+  padding: .3rem .7rem;
+  background: rgba(255,255,255,.6);
+  border: 2px solid rgba(26,86,219,.25);
+  border-radius: 2px;
+  transform: rotate(-1deg);
+  transition: transform .15s;
+}
+.back-link:hover { transform: rotate(0deg) translateX(-3px); }
+
+.theory-intro { background: var(--sticky-yellow); transform: rotate(-.5deg); }
+.theory-vocab { background: var(--sticky-blue); transform: rotate(.4deg); }
+.theory-pronouns { background: var(--sticky-green); transform: rotate(-.3deg); }
+.theory-rules { background: var(--sticky-pink); transform: rotate(.6deg); }
+.theory-patterns { background: var(--sticky-yellow); transform: rotate(-.4deg); }
+.theory-slang { background: var(--sticky-pink); transform: rotate(.5deg); }
+.theory-grammar { background: var(--sticky-green); transform: rotate(-.3deg); }
+
+.example-box {
+  background: rgba(255,255,255,.5);
+  border-left: 4px solid var(--marker-green);
+  padding: .75rem 1rem;
+  margin: .75rem 0;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+}
+.example-box .pl {
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--marker-blue);
+  display: block;
+  margin-top: .25rem;
+}
+
+.theory-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: .5rem 0 1rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  background: rgba(255,255,255,.5);
+}
+.theory-table th {
+  text-align: left;
+  padding: .55rem .75rem;
+  background: rgba(0,0,0,.06);
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  color: var(--marker-blue);
+}
+.theory-table td {
+  padding: .5rem .75rem;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  vertical-align: top;
+}
+.theory-table .pl {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--marker-blue);
+}
+.theory-table .ko {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.15rem;
+}
+
+.pattern-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+  margin-top: .75rem;
+}
+@media (max-width: 500px) { .pattern-list { grid-template-columns: 1fr; } }
+.pattern-col {
+  background: rgba(255,255,255,.5);
+  padding: .75rem 1rem;
+  border-radius: 2px;
+}
+.pattern-col h4 {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
+}
+.pattern-col.m h4 { color: var(--marker-blue); }
+.pattern-col.f h4 { color: var(--marker-red); }
+.pattern-col li {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-left: 1.1rem;
+  margin-bottom: .25rem;
+}
+
+.theory-lead {
+  margin: 0 0 .75rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.bonus-fact {
+  background: var(--sticky-pink);
+  border: 2px dashed rgba(220, 38, 38, .25);
+  border-radius: 3px;
+  padding: .85rem 1rem;
+  margin: 1rem 0;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  line-height: 1.5;
+  transform: rotate(-.3deg);
+  box-shadow: var(--shadow);
+}
+.bonus-fact strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: var(--marker-red);
+  display: block;
+  margin-bottom: .35rem;
+}

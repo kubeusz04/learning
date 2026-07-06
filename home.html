@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning each other language — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Kalam:wght@300;400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="whiteboard.css">
+</head>
+<body>
+
+<div class="whiteboard">
+  <div class="whiteboard-inner">
+    <span class="board-doodle doodle-1">📚</span>
+    <span class="board-doodle doodle-2">✏️</span>
+
+    <div class="container">
+      <header class="home-header">
+        <h1>Learning each other language</h1>
+      </header>
+
+      <!-- Step 1: pick track -->
+      <div class="hub-track-view" id="trackView">
+        <div class="hub-track-pick">
+          <button type="button" class="hub-track-btn polish" data-track="Polish">
+            <span class="hub-track-flag" aria-hidden="true">🇵🇱</span>
+            <h2>Polish</h2>
+            <span class="hub-track-progress" id="progressPolish"></span>
+          </button>
+          <button type="button" class="hub-track-btn korean" data-track="Korean">
+            <span class="hub-track-flag" aria-hidden="true">🇰🇷</span>
+            <h2>Korean</h2>
+            <span class="hub-track-progress" id="progressKorean"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: lessons for chosen track -->
+      <div class="hub-lessons-view" id="lessonsView" hidden>
+        <button type="button" class="hub-back" id="btnBack">← Choose another language</button>
+
+        <div class="hub-track-heading">
+          <h2 id="trackTitle">Polish</h2>
+        </div>
+
+        <div class="hub-continue" id="continueBox" hidden>
+          <a href="#" id="continueLink">→</a>
+        </div>
+
+        <div class="hub-lessons-grid" id="lessonGrid"></div>
+
+        <section class="hub-tools" id="toolsSection">
+          <div class="hub-links">
+            <a href="Korean/transcribe.html" class="primary">Polish ↔ Korean translator</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div class="whiteboard-tray">
+    <div class="marker-cap"></div>
+    <div class="marker-cap"></div>
+    <div class="marker-cap"></div>
+    <div class="marker-cap"></div>
+  </div>
+</div>
+
+<script src="lesson-progress.js"></script>
+<script>
+  const TRACK_KEY = 'pp-lesson:track';
+  const trackView = document.getElementById('trackView');
+  const lessonsView = document.getElementById('lessonsView');
+  const lessonGrid = document.getElementById('lessonGrid');
+  const allLessons = LessonProgress.getAllLessons();
+
+  function trackStats(track) {
+    const lessons = allLessons.filter((l) => l.track === track);
+    const done = lessons.reduce((s, l) => s + l.done, 0);
+    const total = lessons.reduce((s, l) => s + l.total, 0);
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    return { lessons, done, total, pct };
+  }
+
+  function updateTrackButtons() {
+    ['Polish', 'Korean'].forEach((track) => {
+      const el = document.getElementById('progress' + track);
+      const { done, total, pct } = trackStats(track);
+      if (!total) {
+        el.textContent = '';
+        return;
+      }
+      el.textContent = done + ' / ' + total + ' exercises · ' + pct + '%';
+    });
+  }
+
+  function saveTrack(track) {
+    localStorage.setItem(TRACK_KEY, track);
+  }
+
+  function showLessons(track) {
+    saveTrack(track);
+    trackView.hidden = true;
+    lessonsView.hidden = false;
+
+    const { lessons } = trackStats(track);
+    const flag = track === 'Polish' ? '🇵🇱' : '🇰🇷';
+
+    document.getElementById('trackTitle').textContent = flag + ' ' + track;
+
+    lessonGrid.innerHTML = '';
+    lessons.forEach((lesson) => {
+      const shortTitle = lesson.title.replace(/^Polish L\d+ — /, '').replace(/^Korean L\d+ — /, 'Lesson ');
+      const card = document.createElement('article');
+      card.className = 'hub-card';
+      card.innerHTML =
+        '<h3>' + shortTitle + '</h3>' +
+        '<div class="hub-bar"><div class="hub-bar-fill" style="width:' + lesson.percent + '%"></div></div>' +
+        '<div class="hub-links">' +
+        '<a href="' + lesson.practice + '" class="primary">Practice</a>' +
+        '<a href="' + lesson.theory + '">Theory</a>' +
+        '</div>';
+      lessonGrid.appendChild(card);
+    });
+
+    const continueBox = document.getElementById('continueBox');
+    const continueLink = document.getElementById('continueLink');
+    const lastId = LessonProgress.getLastLessonId();
+    const last = lastId ? LessonProgress.getLesson(lastId) : null;
+
+    if (last && last.track === track) {
+      const data = LessonProgress.load(lastId);
+      const lastPct = Math.round((data.completed.length / last.total) * 100);
+      continueLink.href = last.practice;
+      continueLink.textContent = last.title.replace(/^Polish L\d+ — /, '').replace(/^Korean L\d+ — /, '') + ' (' + lastPct + '%)';
+      continueBox.hidden = false;
+    } else {
+      continueBox.hidden = true;
+    }
+  }
+
+  function showTrackPicker() {
+    lessonsView.hidden = true;
+    trackView.hidden = false;
+    localStorage.removeItem(TRACK_KEY);
+  }
+
+  document.querySelectorAll('.hub-track-btn').forEach((btn) => {
+    btn.addEventListener('click', () => showLessons(btn.dataset.track));
+  });
+
+  document.getElementById('btnBack').addEventListener('click', showTrackPicker);
+
+  updateTrackButtons();
+
+  const savedTrack = localStorage.getItem(TRACK_KEY);
+  if (savedTrack === 'Polish' || savedTrack === 'Korean') {
+    showLessons(savedTrack);
+  }
+</script>
+</body>
+</html>

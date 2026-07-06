@@ -1,0 +1,72 @@
+/* Korean lesson pages — Hangul typography & transcription */
+
+.ko,
+em.ko,
+span.ko,
+strong.ko,
+.pattern-formula .ko,
+.summary-item .ko {
+  font-family: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+  font-weight: 500;
+  letter-spacing: -.02em;
+}
+
+.pattern-formula .ko {
+  font-size: 2rem;
+}
+
+.ko-word {
+  cursor: pointer;
+  border-bottom: 1px dotted rgba(124, 58, 237, .35);
+}
+.ko-word:hover { border-bottom-color: var(--marker-purple); }
+
+.ko-roman {
+  font-family: 'Caveat', cursive;
+  font-size: .78em;
+  color: var(--marker-blue);
+  font-weight: 700;
+  margin-left: .15em;
+  display: none;
+}
+.ko-word.revealed .ko-roman { display: inline; }
+
+.btn.ko,
+.match-item.ko,
+.word-chip.ko {
+  font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.fill-sentence.ko {
+  font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+.fill-sentence.ko input {
+  font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+table.vocab .ko,
+table.theory-table .ko {
+  font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--marker-purple);
+}
+
+.flashcard-ko {
+  font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 500;
+}
+
+.example-pl.ko,
+.example-hint.ko {
+  font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+}

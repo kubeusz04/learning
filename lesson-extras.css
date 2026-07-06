@@ -1,0 +1,74 @@
+/* Lesson 2+ — blocks not in base lesson 1 stylesheet */
+
+.explain-box {
+  background: rgba(255,255,255,.55);
+  border: 2px dashed var(--marker-purple);
+  border-radius: 3px;
+  padding: 1rem 1.15rem;
+  margin: 1rem 0;
+  font-size: .98rem;
+}
+.explain-box h4 {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: var(--marker-purple);
+  margin-bottom: .5rem;
+}
+.explain-box ul {
+  margin: .5rem 0 .5rem 1.25rem;
+}
+.explain-box li { margin-bottom: .35rem; }
+
+.explain-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+  margin: .75rem 0;
+}
+@media (max-width: 500px) {
+  .explain-compare { grid-template-columns: 1fr; }
+}
+.explain-compare > div {
+  background: rgba(255,255,255,.5);
+  padding: .75rem .9rem;
+  border-radius: 2px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+}
+
+.gender-rule-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 700px) {
+  .gender-rule-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 400px) {
+  .gender-rule-4 { grid-template-columns: 1fr; }
+}
+
+.sie-examples {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  margin: .35rem 0 .35rem 1.25rem;
+}
+.sie-examples li { margin-bottom: .3rem; }
+
+.bonus-fact {
+  background: var(--sticky-pink);
+  border: 2px dashed rgba(220, 38, 38, .25);
+  border-radius: 3px;
+  padding: .85rem 1rem;
+  margin: 1rem 0;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  line-height: 1.5;
+  transform: rotate(-.3deg);
+  box-shadow: var(--shadow);
+}
+.bonus-fact strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: var(--marker-red);
+  display: block;
+  margin-bottom: .35rem;
+}
