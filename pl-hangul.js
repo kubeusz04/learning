@@ -76,7 +76,7 @@
 
   function isPolishWord(word) {
     if (POLISH_HINT.test(word)) return true;
-    return /^(tak|taka|taki|takie|zbyt|za|się|sie|bardzo|właśnie|wlascie|naj|jest|jestem|jesteś|jestes|czy|dziś|dzis|pogoda|gorąco|goraco|zimno|idealna|idealny|idealne|przytul|tulę|tule|chcę|chce|mnie|cię|cie|okropna|cudown|wspaniał|wspanial|szczęśliw|szczesliw|cieszę|ciesze|czeszę|czesze|partykuł|partykul|niesamowit|piękn|piekn|najlepsz|najbardziej|wszechświat|wszechswiat|świat|swiat|ty|ja|na)$/i.test(word);
+    return /^(tak|taka|taki|takie|zbyt|za|się|sie|bardzo|właśnie|wlascie|naj|jest|jestem|jesteś|jestes|czy|dziś|dzis|pogoda|gorąco|goraco|zimno|idealna|idealny|idealne|przytul|tulę|tule|chcę|chce|mnie|cię|cie|skarb|kotk|misi|kocham|człowiek|czlowiek|ludzie|niebo|ziemi|wszechświat|okropna|cudown|wspaniał|wspanial|szczęśliw|szczesliw|cieszę|ciesze|czeszę|czesze|partykuł|partykul|niesamowit|piękn|piekn|najlepsz|najbardziej|wszechświat|wszechswiat|świat|swiat|ty|ja|na)$/i.test(word);
   }
 
   function isPolishText(text) {

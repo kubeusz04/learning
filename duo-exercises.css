@@ -1,0 +1,488 @@
+/* Duolingo-style exercise UI */
+
+.duo-wrap {
+  margin-top: 1rem;
+  position: relative;
+}
+
+.duo-top {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+
+.duo-hearts {
+  display: flex;
+  gap: .2rem;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.duo-heart {
+  display: inline-block;
+  transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), opacity .25s;
+}
+
+.duo-heart.lost {
+  transform: scale(0) rotate(25deg);
+  opacity: 0;
+}
+
+.duo-progress-track {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+  height: 14px;
+}
+
+.duo-progress-seg {
+  flex: 1;
+  background: rgba(0, 0, 0, .08);
+  border-radius: 999px;
+  overflow: hidden;
+  transform: scaleX(.92);
+  transition: transform .3s;
+}
+
+.duo-progress-seg span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #58cc02, #89e219);
+  border-radius: 999px;
+  transition: width .45s cubic-bezier(.34, 1.2, .64, 1);
+}
+
+.duo-progress-seg.done span { width: 100%; }
+.duo-progress-seg.current { transform: scaleX(1); }
+
+.duo-streak {
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--marker-orange);
+  min-width: 2.5rem;
+  text-align: right;
+  opacity: 0;
+  transform: scale(.8);
+  transition: opacity .25s, transform .25s;
+}
+
+.duo-streak.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.duo-card {
+  background: rgba(255, 255, 255, .75);
+  border: 2px solid rgba(0, 0, 0, .1);
+  border-radius: 12px;
+  padding: 1.35rem 1.2rem 1rem;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, .06);
+  min-height: 220px;
+  position: relative;
+  animation: duoSlideIn .45s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.duo-card.exit-left {
+  animation: duoSlideOut .35s ease both;
+}
+
+@keyframes duoSlideIn {
+  from { opacity: 0; transform: translateX(28px) scale(.96); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes duoSlideOut {
+  to { opacity: 0; transform: translateX(-28px) scale(.96); }
+}
+
+.duo-prompt-label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+  margin-bottom: .35rem;
+}
+
+.duo-prompt {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  line-height: 1.45;
+}
+
+.duo-prompt-big {
+  font-family: 'Caveat', cursive;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--marker-blue);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.duo-prompt-big.lang-ko {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+}
+
+.duo-options {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+
+.duo-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: .85rem 1rem;
+  border: 2px solid rgba(0, 0, 0, .14);
+  border-radius: 12px;
+  border-bottom-width: 4px;
+  background: white;
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform .12s, border-color .15s, background .15s, box-shadow .12s;
+}
+
+.duo-option.lang-ko {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.duo-option:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--marker-blue);
+  background: rgba(207, 232, 255, .35);
+}
+
+.duo-option:active:not(:disabled) {
+  transform: translateY(1px);
+  border-bottom-width: 2px;
+}
+
+.duo-option.selected {
+  border-color: var(--marker-blue);
+  background: rgba(207, 232, 255, .55);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, .15);
+}
+
+.duo-option.correct {
+  border-color: #58cc02;
+  background: rgba(212, 245, 212, .85);
+  animation: duoPop .45s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.duo-option.wrong {
+  border-color: var(--error);
+  background: rgba(255, 214, 214, .6);
+  animation: duoShake .45s ease;
+}
+
+.duo-option:disabled { cursor: default; opacity: .92; }
+
+@keyframes duoPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+@keyframes duoShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+.duo-fill-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: .75rem;
+}
+
+.duo-fill-input {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  border: none;
+  border-bottom: 3px solid var(--marker-blue);
+  background: rgba(207, 232, 255, .3);
+  padding: .15rem .45rem;
+  min-width: 100px;
+  border-radius: 4px 4px 0 0;
+  outline: none;
+  transition: background .2s, border-color .2s;
+}
+
+.duo-fill-input:focus {
+  background: white;
+  box-shadow: 0 2px 8px rgba(26, 86, 219, .15);
+}
+
+.duo-fill-input.correct {
+  border-bottom-color: #58cc02;
+  color: #15803d;
+  animation: duoPop .4s ease;
+}
+
+.duo-fill-input.wrong {
+  border-bottom-color: var(--error);
+  animation: duoShake .4s ease;
+}
+
+.duo-answer-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  min-height: 52px;
+  padding: .65rem;
+  margin-bottom: .75rem;
+  border: 2px dashed rgba(0, 0, 0, .12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .5);
+}
+
+.duo-answer-line.over {
+  border-color: var(--marker-blue);
+  background: rgba(207, 232, 255, .25);
+}
+
+.duo-tile-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.duo-tile {
+  padding: .5rem .85rem;
+  border: 2px solid rgba(0, 0, 0, .12);
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  background: white;
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .12s, opacity .2s;
+}
+
+.duo-tile.lang-ko {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+}
+
+.duo-tile:hover:not(.used) { transform: translateY(-2px); }
+.duo-tile.used { opacity: .35; pointer-events: none; transform: scale(.95); }
+
+.duo-match-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+}
+
+.duo-match-item {
+  padding: .65rem .75rem;
+  border: 2px solid rgba(0, 0, 0, .12);
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  background: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .12s, border-color .15s, background .15s;
+}
+
+.duo-match-item.lang-ko {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.duo-match-item.selected {
+  border-color: var(--marker-blue);
+  background: rgba(207, 232, 255, .5);
+  transform: scale(1.03);
+}
+
+.duo-match-item.matched {
+  border-color: #58cc02;
+  background: rgba(212, 245, 212, .7);
+  pointer-events: none;
+  animation: duoPop .35s ease;
+}
+
+.duo-match-item.wrong-flash {
+  animation: duoShake .35s ease;
+  border-color: var(--error);
+}
+
+.duo-footer {
+  margin-top: 1.1rem;
+  padding-top: .85rem;
+  border-top: 2px solid rgba(0, 0, 0, .06);
+}
+
+.duo-check {
+  width: 100%;
+  padding: .85rem 1rem;
+  border: none;
+  border-radius: 12px;
+  border-bottom: 4px solid #46a302;
+  background: #58cc02;
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .12s, filter .15s, opacity .2s;
+}
+
+.duo-check:hover:not(:disabled) {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.duo-check:active:not(:disabled) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.duo-check:disabled {
+  background: #e5e5e5;
+  border-bottom-color: #ccc;
+  color: #999;
+  cursor: default;
+}
+
+.duo-check.continue {
+  background: #1cb0f6;
+  border-bottom-color: #1899d6;
+}
+
+.duo-feedback {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9000;
+  padding: 1rem 1.25rem 1.35rem;
+  transform: translateY(110%);
+  transition: transform .4s cubic-bezier(.22, 1, .36, 1);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, .18);
+}
+
+.duo-feedback.show { transform: translateY(0); }
+
+.duo-feedback.correct {
+  background: linear-gradient(180deg, #d7ffb8, #b8f397);
+  border-top: 3px solid #58cc02;
+}
+
+.duo-feedback.wrong {
+  background: linear-gradient(180deg, #ffdfe0, #ffcaca);
+  border-top: 3px solid var(--error);
+}
+
+.duo-feedback-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin-bottom: .25rem;
+}
+
+.duo-feedback.correct .duo-feedback-title { color: #58a700; }
+.duo-feedback.wrong .duo-feedback-title { color: var(--error); }
+
+.duo-feedback-body {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  margin-bottom: .85rem;
+}
+
+.duo-feedback-btn {
+  width: 100%;
+  padding: .75rem;
+  border: none;
+  border-radius: 12px;
+  border-bottom: 4px solid rgba(0, 0, 0, .15);
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: white;
+}
+
+.duo-feedback.correct .duo-feedback-btn {
+  background: #58cc02;
+  border-bottom-color: #46a302;
+}
+
+.duo-feedback.wrong .duo-feedback-btn {
+  background: var(--error);
+  border-bottom-color: #b91c1c;
+}
+
+.duo-complete {
+  text-align: center;
+  padding: 2rem 1rem;
+  animation: duoSlideIn .5s ease both;
+}
+
+.duo-complete-icon {
+  font-size: 4rem;
+  animation: duoBounce 1s ease infinite;
+}
+
+@keyframes duoBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.duo-complete h3 {
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  color: var(--marker-green);
+  margin: .5rem 0;
+}
+
+.duo-particles {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  overflow: hidden;
+}
+
+.duo-particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: duoConfetti 1.1s ease-out forwards;
+}
+
+@keyframes duoConfetti {
+  0% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+  100% { opacity: 0; transform: translateY(120vh) rotate(720deg) scale(.5); }
+}
+
+@media (max-width: 520px) {
+  .duo-match-grid { grid-template-columns: 1fr; }
+  .duo-prompt-big { font-size: 1.55rem; }
+}

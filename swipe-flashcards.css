@@ -1,0 +1,286 @@
+/* Swipe Flashcards */
+.flash-root {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.flash-shell {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, rgba(28, 176, 246, 0.1), rgba(206, 130, 255, 0.1));
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.flash-hud {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.35rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(255, 255, 255, 0.65);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.flash-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 2.75rem;
+}
+
+.flash-stat-label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.68rem;
+  color: rgba(0, 0, 0, 0.45);
+  line-height: 1;
+}
+
+.flash-stat strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.25rem;
+  color: #1cb0f6;
+}
+
+.flash-progress {
+  height: 6px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.flash-progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #1cb0f6, #58cc02);
+  transition: width 0.3s ease;
+}
+
+.flash-round-label {
+  margin: 0;
+  padding: 0.45rem 0.75rem 0;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.88rem;
+  color: rgba(0, 0, 0, 0.5);
+  min-height: 1.1rem;
+}
+
+.flash-stage {
+  padding: 0.75rem 0.75rem 0.35rem;
+}
+
+.flash-card-wrap {
+  perspective: 900px;
+  touch-action: pan-y;
+}
+
+.flash-card {
+  position: relative;
+  min-height: 200px;
+  margin: 0 auto;
+  max-width: 340px;
+  border-radius: 18px;
+  transform-style: preserve-3d;
+  transition: transform 0.28s ease, box-shadow 0.2s;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.flash-card:active {
+  cursor: grabbing;
+}
+
+.flash-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flash-card.flipped.drag-know,
+.flash-card.flipped.drag-dont {
+  transform: rotateY(180deg);
+}
+
+.flash-card.drag-know {
+  box-shadow: 0 0 0 3px rgba(88, 204, 2, 0.45);
+}
+
+.flash-card.drag-dont {
+  box-shadow: 0 0 0 3px rgba(255, 75, 75, 0.45);
+}
+
+.flash-card.exit-right {
+  animation: flashExitRight 0.28s ease forwards;
+}
+
+.flash-card.exit-left {
+  animation: flashExitLeft 0.28s ease forwards;
+}
+
+@keyframes flashExitRight {
+  to {
+    transform: translateX(120%) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flashExitLeft {
+  to {
+    transform: translateX(-120%) rotate(-18deg);
+    opacity: 0;
+  }
+}
+
+.flash-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem;
+  border-radius: 18px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  text-align: center;
+  word-break: break-word;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.08);
+}
+
+.flash-front {
+  background: linear-gradient(145deg, #fff 0%, #eef8ff 100%);
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  line-height: 1.15;
+  color: #222;
+}
+
+.flash-front.pl {
+  font-family: 'Caveat', cursive;
+}
+
+.flash-front.ko {
+  font-family: 'Noto Sans KR', 'Caveat', sans-serif;
+  font-size: 1.65rem;
+}
+
+.flash-front.long {
+  font-size: 1.45rem;
+}
+
+.flash-back {
+  background: linear-gradient(145deg, #fff9e6 0%, #ffe8f0 100%);
+  transform: rotateY(180deg);
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  color: #333;
+  white-space: pre-line;
+}
+
+.flash-swipe-hints {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.65rem;
+  padding: 0 0.15rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.78rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.flash-hint-left {
+  color: rgba(255, 75, 75, 0.75);
+}
+
+.flash-hint-right {
+  color: rgba(88, 204, 2, 0.85);
+}
+
+.flash-hint-tap {
+  font-size: 0.72rem;
+  opacity: 0.7;
+}
+
+.flash-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem 0.5rem;
+}
+
+.flash-btn {
+  flex: 1;
+  padding: 0.55rem 0.5rem;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.flash-btn.dont {
+  background: rgba(255, 75, 75, 0.15);
+  color: #c0392b;
+  border: 2px solid rgba(255, 75, 75, 0.35);
+}
+
+.flash-btn.know {
+  background: rgba(88, 204, 2, 0.2);
+  color: #3a8f00;
+  border: 2px solid rgba(88, 204, 2, 0.45);
+}
+
+.flash-btn:hover {
+  transform: translateY(-1px);
+}
+
+.flash-msg {
+  margin: 0;
+  padding: 0 0.75rem 0.35rem;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.55);
+  min-height: 1.2rem;
+  line-height: 1.35;
+}
+
+.flash-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0 0.65rem 0.65rem;
+}
+
+.flash-restart,
+.flash-done {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.flash-restart {
+  background: #1cb0f6;
+  color: white;
+  box-shadow: 0 4px 0 #0d8ecf;
+}
+
+.flash-done {
+  background: #6c5ce7;
+  color: white;
+  box-shadow: 0 4px 0 #4b3fbf;
+}
+
+@media (max-width: 400px) {
+  .flash-front {
+    font-size: 1.65rem;
+  }
+  .flash-front.ko {
+    font-size: 1.35rem;
+  }
+}

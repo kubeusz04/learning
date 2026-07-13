@@ -1,0 +1,392 @@
+/* Word Tower mini-game */
+.tower-root {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.tower-shell {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, rgba(255, 150, 50, 0.12), rgba(88, 204, 2, 0.08));
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.tower-hud {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.65);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.tower-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3.2rem;
+}
+
+.tower-stat-label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.72rem;
+  color: rgba(0, 0, 0, 0.45);
+  line-height: 1;
+}
+
+.tower-stat strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: #e67e22;
+}
+
+.tower-hearts {
+  display: flex;
+  gap: 0.15rem;
+  margin-left: auto;
+  font-size: 1rem;
+}
+
+.tower-heart {
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.tower-heart.lost {
+  opacity: 0.25;
+  filter: grayscale(1);
+  transform: scale(0.85);
+}
+
+.tower-prompt {
+  text-align: center;
+  padding: 0.55rem 0.85rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.55);
+  background: rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  line-height: 1.45;
+}
+
+.tower-build-foundation {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  color: #8B4513;
+}
+
+.tower-build-placed {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  color: #222;
+}
+
+.tower-build-empty {
+  font-family: 'Caveat', cursive;
+  color: rgba(0, 0, 0, 0.28);
+}
+
+.tower-build-active {
+  color: #e67e22;
+  background: rgba(255, 200, 0, 0.35);
+  padding: 0.05rem 0.35rem;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.tower-mission {
+  padding: 0.75rem 0.85rem 0.65rem;
+  background: linear-gradient(180deg, rgba(255, 200, 0, 0.28), rgba(255, 150, 50, 0.12));
+  border-bottom: 3px solid rgba(230, 126, 34, 0.35);
+}
+
+.tower-mission-label {
+  margin: 0 0 0.2rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+.tower-mission-en {
+  margin: 0 0 0.65rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #1a56db;
+  text-align: center;
+}
+
+.tower-mission-next-wrap {
+  text-align: center;
+  margin-bottom: 0.55rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 2px solid #e67e22;
+  box-shadow: 0 3px 0 rgba(192, 101, 26, 0.25);
+}
+
+.tower-mission-next-label {
+  display: block;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.25rem;
+}
+
+.tower-mission-next {
+  display: block;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.55rem, 5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #c0651a;
+  word-break: break-word;
+}
+
+.tower-mission-next.ko {
+  font-family: 'Noto Sans KR', 'Caveat', sans-serif;
+  font-size: clamp(1.35rem, 4.5vw, 1.75rem);
+}
+
+.tower-mission-next-en {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.88rem;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.tower-timer-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tower-timer-bar {
+  flex: 1;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.tower-timer-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #58cc02, #7ae02a);
+  border-radius: 999px;
+  transition: width 0.08s linear;
+}
+
+.tower-timer-wrap--warn .tower-timer-fill {
+  background: linear-gradient(90deg, #ffc800, #ff9600);
+}
+
+.tower-timer-wrap--urgent .tower-timer-fill {
+  background: linear-gradient(90deg, #ff4b4b, #ff9600);
+  animation: towerTimerPulse 0.55s ease infinite alternate;
+}
+
+@keyframes towerTimerPulse {
+  from { opacity: 1; }
+  to { opacity: 0.65; }
+}
+
+.tower-timer-num {
+  flex-shrink: 0;
+  min-width: 1.35rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #e67e22;
+  text-align: center;
+}
+
+.tower-timer-wrap--urgent .tower-timer-num {
+  color: #c0392b;
+}
+
+.tower-prompt strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  color: var(--marker-blue, #1cb0f6);
+}
+
+.tower-scene {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 200px;
+  padding: 1rem 0.75rem 0.5rem;
+  background: linear-gradient(180deg, rgba(135, 206, 250, 0.15) 0%, rgba(210, 180, 140, 0.25) 100%);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.05s;
+}
+
+.tower-scene.wobble {
+  animation: towerWobble 0.65s ease;
+}
+
+@keyframes towerWobble {
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  15% { transform: rotate(-2.5deg) translateX(-6px); }
+  30% { transform: rotate(2.5deg) translateX(6px); }
+  45% { transform: rotate(-2deg) translateX(-4px); }
+  60% { transform: rotate(2deg) translateX(4px); }
+  75% { transform: rotate(-1deg) translateX(-2px); }
+}
+
+.tower-stack {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 0.2rem;
+  width: 100%;
+  max-width: 280px;
+}
+
+.tower-block {
+  width: 100%;
+  max-width: 240px;
+  padding: 0.45rem 0.65rem;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  line-height: 1.2;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+  word-break: break-word;
+}
+
+.tower-block.foundation {
+  background: linear-gradient(145deg, #8B4513 0%, #A0522D 100%);
+  color: #fff;
+  font-family: 'Caveat', cursive;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-color: #6B3410;
+  max-width: 260px;
+}
+
+.tower-block.placed {
+  background: linear-gradient(145deg, #fff 0%, #ffe8cc 100%);
+  color: #222;
+  animation: towerPlace 0.35s ease;
+}
+
+.tower-block.placed.ko {
+  font-family: 'Noto Sans KR', 'Patrick Hand', sans-serif;
+  font-size: 0.92rem;
+}
+
+.tower-block.empty {
+  background: rgba(255, 255, 255, 0.35);
+  color: rgba(0, 0, 0, 0.25);
+  border-style: dashed;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  box-shadow: none;
+}
+
+@keyframes towerPlace {
+  0% { transform: translateY(-12px); opacity: 0.5; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.tower-bank {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.75rem;
+  min-height: 3.5rem;
+}
+
+.tower-chip {
+  padding: 0.5rem 0.85rem;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #fff 0%, #f0f8ff 100%);
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.08);
+  transition: transform 0.12s, border-color 0.12s, opacity 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tower-chip.ko {
+  font-family: 'Noto Sans KR', 'Patrick Hand', sans-serif;
+  font-size: 0.9rem;
+}
+
+.tower-chip.long {
+  font-size: 0.82rem;
+}
+
+.tower-chip:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: #e67e22;
+}
+
+.tower-chip.used {
+  opacity: 0.35;
+  cursor: default;
+  transform: scale(0.92);
+  box-shadow: none;
+}
+
+.tower-msg {
+  margin: 0;
+  padding: 0 0.75rem 0.35rem;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.92rem;
+  color: rgba(0, 0, 0, 0.55);
+  min-height: 1.2rem;
+}
+
+.tower-footer {
+  text-align: center;
+  padding: 0 0.65rem 0.65rem;
+}
+
+.tower-restart {
+  padding: 0.5rem 1.15rem;
+  border: none;
+  border-radius: 12px;
+  background: #e67e22;
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #c0651a;
+}
+
+.tower-restart:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 420px) {
+  .tower-block {
+    font-size: 0.88rem;
+    padding: 0.35rem 0.5rem;
+  }
+  .tower-chip {
+    font-size: 0.88rem;
+    padding: 0.4rem 0.65rem;
+  }
+}

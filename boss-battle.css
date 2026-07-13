@@ -1,0 +1,418 @@
+/* Boss Battle mini-game */
+.boss-root {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.boss-shell {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, rgba(120, 50, 200, 0.14), rgba(255, 75, 75, 0.1));
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.boss-hud {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.65);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.boss-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3.2rem;
+}
+
+.boss-stat-label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.72rem;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.boss-stat strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: #9b59b6;
+}
+
+.boss-hearts {
+  display: flex;
+  gap: 0.15rem;
+  margin-left: auto;
+  font-size: 1rem;
+}
+
+.boss-timer-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.boss-timer-bar {
+  flex: 1;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.boss-timer-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #58cc02, #7ae02a);
+  border-radius: 999px;
+  transition: width 0.08s linear;
+}
+
+.boss-timer-wrap--warn .boss-timer-fill {
+  background: linear-gradient(90deg, #ffc800, #ff9600);
+}
+
+.boss-timer-wrap--urgent .boss-timer-fill {
+  background: linear-gradient(90deg, #ff4b4b, #ff9600);
+  animation: bossTimerPulse 0.55s ease infinite alternate;
+}
+
+@keyframes bossTimerPulse {
+  from { opacity: 1; }
+  to { opacity: 0.65; }
+}
+
+.boss-timer-num {
+  flex-shrink: 0;
+  min-width: 1.35rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #6c3483;
+  text-align: center;
+}
+
+.boss-timer-wrap--urgent .boss-timer-num {
+  color: #c0392b;
+}
+
+.boss-turn.boss-attacking {
+  animation: bossTurnShake 0.35s ease;
+}
+
+@keyframes bossTurnShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.boss-heart.lost {
+  opacity: 0.25;
+  filter: grayscale(1);
+  transform: scale(0.85);
+}
+
+.boss-arena {
+  min-height: 180px;
+  padding: 0.75rem;
+}
+
+.boss-setup {
+  text-align: center;
+  padding: 0.5rem 0.25rem 0.75rem;
+}
+
+.boss-setup-icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.boss-setup-title {
+  margin: 0 0 0.35rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.65rem;
+  color: #6c3483;
+}
+
+.boss-setup-desc {
+  margin: 0 0 0.75rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.92rem;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.35;
+}
+
+.boss-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.boss-type {
+  padding: 0.45rem 0.75rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.12s;
+}
+
+.boss-type:hover {
+  transform: translateY(-1px);
+  border-color: #9b59b6;
+}
+
+.boss-type.active {
+  background: rgba(155, 89, 182, 0.2);
+  border-color: #9b59b6;
+  font-weight: 700;
+}
+
+.boss-start {
+  padding: 0.55rem 1.35rem;
+  border: none;
+  border-radius: 12px;
+  background: #9b59b6;
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #7d3c98;
+}
+
+.boss-start:hover {
+  transform: translateY(-1px);
+}
+
+.boss-field {
+  display: flex;
+  justify-content: center;
+  padding: 0.25rem 0;
+}
+
+.boss-enemy {
+  text-align: center;
+  width: 100%;
+  max-width: 320px;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.boss-sprite {
+  display: block;
+  font-size: 4rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 0 rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s;
+}
+
+.boss-enemy.hurt .boss-sprite {
+  filter: hue-rotate(30deg) drop-shadow(0 4px 0 rgba(0, 0, 0, 0.15));
+}
+
+.boss-enemy.critical .boss-sprite {
+  filter: hue-rotate(60deg) saturate(1.4) drop-shadow(0 4px 0 rgba(0, 0, 0, 0.15));
+  animation: bossPulse 1s ease infinite;
+}
+
+.boss-enemy.defeated .boss-sprite {
+  transform: scale(0) rotate(180deg);
+  opacity: 0;
+}
+
+.boss-enemy.victorious .boss-sprite {
+  animation: bossVictory 0.6s ease;
+}
+
+@keyframes bossPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes bossVictory {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2) rotate(-8deg); }
+}
+
+.boss-enemy.boss-hit {
+  animation: bossHit 0.45s ease;
+}
+
+.boss-enemy.boss-miss {
+  animation: bossShake 0.45s ease;
+}
+
+@keyframes bossHit {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(8px); }
+  75% { transform: translateX(-8px); }
+}
+
+@keyframes bossShake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(3deg); }
+  75% { transform: rotate(-3deg); }
+}
+
+.boss-name {
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  color: #6c3483;
+  margin: 0.15rem 0 0.45rem;
+}
+
+.boss-hpbar {
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.boss-hpfill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff4b4b, #ff9600);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+.boss-hpnum {
+  margin-top: 0.25rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.82rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.boss-action {
+  padding: 0 0.75rem 0.5rem;
+}
+
+.boss-turn {
+  border-radius: 14px;
+  padding: 0.65rem 0.75rem;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.boss-turn.player {
+  background: rgba(88, 204, 2, 0.1);
+}
+
+.boss-turn.boss {
+  background: rgba(255, 75, 75, 0.12);
+}
+
+.boss-turn-label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.88rem;
+  color: rgba(0, 0, 0, 0.55);
+  margin-bottom: 0.35rem;
+}
+
+.boss-prompt {
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 1.45rem;
+  color: #222;
+  margin-bottom: 0.55rem;
+  line-height: 1.25;
+}
+
+.boss-prompt.ko {
+  font-family: 'Noto Sans KR', 'Caveat', sans-serif;
+  font-size: 1.25rem;
+}
+
+.boss-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+}
+
+.boss-opt {
+  padding: 0.55rem 0.65rem;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  background: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.95rem;
+  line-height: 1.15;
+  cursor: pointer;
+  text-align: center;
+  word-break: break-word;
+  transition: border-color 0.15s, background 0.15s, transform 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.boss-opt.ko {
+  font-family: 'Noto Sans KR', 'Patrick Hand', sans-serif;
+  font-size: 0.88rem;
+}
+
+.boss-opt.long {
+  font-size: 0.82rem;
+}
+
+.boss-opt:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: #9b59b6;
+}
+
+.boss-opt.correct {
+  background: rgba(88, 204, 2, 0.25);
+  border-color: var(--duo-green, #58cc02);
+}
+
+.boss-opt.wrong {
+  background: rgba(255, 75, 75, 0.2);
+  border-color: #ff4b4b;
+}
+
+.boss-opt:disabled {
+  cursor: default;
+}
+
+.boss-msg {
+  margin: 0;
+  padding: 0 0.75rem 0.35rem;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.92rem;
+  color: rgba(0, 0, 0, 0.55);
+  min-height: 1.2rem;
+}
+
+.boss-footer {
+  text-align: center;
+  padding: 0 0.65rem 0.65rem;
+}
+
+.boss-restart {
+  padding: 0.5rem 1.15rem;
+  border: none;
+  border-radius: 12px;
+  background: #9b59b6;
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #7d3c98;
+}
+
+@media (max-width: 420px) {
+  .boss-options {
+    grid-template-columns: 1fr;
+  }
+  .boss-sprite {
+    font-size: 3rem;
+  }
+}

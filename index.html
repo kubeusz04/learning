@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Kalam:wght@300;400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="whiteboard.css">
+  <link rel="stylesheet" href="player-xp.css">
+  <link rel="stylesheet" href="practice.css">
 </head>
 <body>
 
@@ -22,34 +24,17 @@
     <div class="home-link-wrap"><a href="home.html" class="home-link">🏠 Home</a></div>
     <h1>Compliments &amp; Basic Sentences</h1>
     <p class="subtitle">Learn how to praise someone in Polish — Person + verb + description</p>
-    <p class="board-date">Topic: Compliments &amp; Basic Sentence Building · <a href="Korean/transcribe.html" style="color:var(--marker-purple)">Polish ↔ Korean translator</a></p>
+    <p class="board-date">Topic: Compliments &amp; Basic Sentence Building</p>
   </header>
 
-  <div class="progress-wrap" id="progressWrap" aria-live="polite" hidden>
-    <div class="progress-label">
-      <span id="progressText">0%</span>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="lesson-practice-cta lesson-practice-cta--top">
+    <a href="practice/pl-1.html" class="practice-btn">🕹️ Arcade</a>
   </div>
 
   <!-- LESSON SUMMARY -->
   <section id="summary">
     <div class="section-head">
       <h2><span class="icon">📋</span> Lesson Summary</h2>
-      <div class="summary-picker board-picker" id="summaryPicker">
-        <button type="button" class="summary-picker-btn" aria-expanded="false" aria-haspopup="listbox">
-          Basic
-          <span class="summary-picker-chevron" aria-hidden="true">▾</span>
-        </button>
-        <ul class="summary-picker-menu" role="listbox">
-          <li class="picker-current" role="option" aria-selected="true">
-            <span class="picker-current">Basic — quick overview</span>
-          </li>
-          <li role="option">
-            <a href="lesson-1-theory.html">Full explanation →</a>
-          </li>
-        </ul>
-      </div>
     </div>
     <div class="summary-grid">
       <div class="summary-item">
@@ -81,7 +66,7 @@
         <span>Person</span><span class="plus">+</span><span>verb</span><span class="plus">+</span><span>description</span>
       </div>
     </div>
-    <p class="muted" style="margin-top:.5rem"><em>Ty jesteś cudowna.</em> = You are wonderful. · <a href="lesson-1-theory.html#pattern">Full explanation →</a></p>
+    <p class="muted" style="margin-top:.5rem"><em>Ty jesteś cudowna.</em> = You are wonderful.</p>
 
     <h3 class="lesson-block-title">2 · Gender endings</h3>
     <p class="lesson-lead muted">The adjective ending changes — same meaning, different form.</p>
@@ -156,329 +141,6 @@
     <p class="tap-hint">👆 Tap cards to practice recall</p>
   </section>
 
-  <!-- EXERCISES -->
-  <section id="exercises">
-    <h2><span class="icon">✏️</span> Interactive Exercises</h2>
-    <p class="muted">Complete the exercises below.</p>
-
-    <!-- Exercise 1: Gender picker -->
-    <div class="exercise" data-exercise="1">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 1 — Pick the correct form</span>
-        <span class="exercise-score" id="score1"></span>
-      </div>
-      <p>You're speaking to a <strong>woman</strong>. Which is correct?</p>
-      <div class="btn-row" id="ex1-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 1)">Jesteś cudowny.</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 1)">Jesteś cudowna.</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 1)">Jesteś cudowne.</button>
-      </div>
-    </div>
-
-    <!-- Exercise 2: Gender picker man -->
-    <div class="exercise" data-exercise="2">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 2 — Pick the correct form</span>
-        <span class="exercise-score" id="score2"></span>
-      </div>
-      <p>You're speaking to a <strong>man</strong>. Which is correct?</p>
-      <div class="btn-row" id="ex2-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 2)">Jesteś wspaniała.</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 2)">Jesteś wspaniały.</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 2)">Jesteś wspaniałe.</button>
-      </div>
-    </div>
-
-    <!-- Exercise 3: Fill in the blank -->
-    <div class="exercise" data-exercise="3">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 3 — Fill in the blank</span>
-        <span class="exercise-score" id="score3"></span>
-      </div>
-      <p class="fill-sentence">Ty <input type="text" id="ex3-input" placeholder="..."> cudowna.</p>
-      <p class="muted">Hint: "You are" in Polish</p>
-      <button class="btn btn-check" onclick="checkFill(3, 'jesteś')">Check answer</button>
-    </div>
-
-    <!-- Exercise 4: Fill in adjective -->
-    <div class="exercise" data-exercise="4">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 4 — Fill in the adjective</span>
-        <span class="exercise-score" id="score4"></span>
-      </div>
-      <p class="fill-sentence">Jesteś najbardziej <input type="text" id="ex4-input" placeholder="..."> na świecie.</p>
-      <p class="muted">"amazing" — feminine form, speaking to a woman</p>
-      <button class="btn btn-check" onclick="checkFill(4, 'wspaniała')">Check answer</button>
-    </div>
-
-    <!-- Exercise 5: Pronoun match -->
-    <div class="exercise" data-exercise="5">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 5 — Match pronouns</span>
-        <span class="exercise-score" id="score5"></span>
-      </div>
-      <p class="muted">Click an English word, then its Polish match.</p>
-      <div class="match-grid">
-        <div class="match-col" id="match-left">
-          <div class="match-item" data-id="a" data-pair="1">I</div>
-          <div class="match-item" data-id="b" data-pair="2">You (singular)</div>
-          <div class="match-item" data-id="c" data-pair="3">She</div>
-          <div class="match-item" data-id="d" data-pair="4">We</div>
-        </div>
-        <div class="match-col" id="match-right">
-          <div class="match-item" data-id="e" data-pair="3">ona</div>
-          <div class="match-item" data-id="f" data-pair="1">ja</div>
-          <div class="match-item" data-id="g" data-pair="4">my</div>
-          <div class="match-item" data-id="h" data-pair="2">ty</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Exercise 6: "To be" conjugation -->
-    <div class="exercise" data-exercise="6">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 6 — Conjugate "to be"</span>
-        <span class="exercise-score" id="score6"></span>
-      </div>
-      <p>Match the subject with the correct form of <em>być</em> (to be):</p>
-      <div class="match-grid">
-        <div class="match-col" id="match2-left">
-          <div class="match-item" data-id="i" data-pair="1">On (he)</div>
-          <div class="match-item" data-id="j" data-pair="2">My (we)</div>
-          <div class="match-item" data-id="k" data-pair="3">Oni (they, m.)</div>
-          <div class="match-item" data-id="l" data-pair="4">Ja (I)</div>
-        </div>
-        <div class="match-col" id="match2-right">
-          <div class="match-item" data-id="m" data-pair="2">jesteśmy</div>
-          <div class="match-item" data-id="n" data-pair="4">jestem</div>
-          <div class="match-item" data-id="o" data-pair="1">jest</div>
-          <div class="match-item" data-id="p" data-pair="3">są</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Exercise 7: Sentence builder -->
-    <div class="exercise" data-exercise="7">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 7 — Build the sentence</span>
-        <span class="exercise-score" id="score7"></span>
-      </div>
-      <p>Build the sentence: <strong>"You are perfect."</strong> (to a man)</p>
-      <p class="muted">Drag words into the blanks — or tap a word, then tap a blank.</p>
-      <div class="word-bank" id="bank7">
-        <span class="word-chip" draggable="true" data-word="Jesteś" data-bank="7">Jesteś</span>
-        <span class="word-chip" draggable="true" data-word="idealny." data-bank="7">idealny.</span>
-        <span class="word-chip" draggable="true" data-word="cudowna." data-bank="7">cudowna.</span>
-        <span class="word-chip" draggable="true" data-word="idealna." data-bank="7">idealna.</span>
-      </div>
-      <p class="fill-sentence">
-        <span class="drop-zone" data-slot="0" data-ex="7" data-bank="7"></span>
-        <span class="drop-zone" data-slot="1" data-ex="7" data-bank="7"></span>
-      </p>
-      <button class="btn btn-check" onclick="checkBuilder(7, ['Jesteś','idealny.'])">Check answer</button>
-      <button class="btn" onclick="resetBuilder(7)" style="margin-left:.5rem">Reset</button>
-    </div>
-
-    <!-- Exercise 8: Phrase translation -->
-    <div class="exercise" data-exercise="8">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 8 — Translate the phrase</span>
-        <span class="exercise-score" id="score8"></span>
-      </div>
-      <p>What does <strong>"w całym wszechświecie"</strong> mean?</p>
-      <div class="btn-row" id="ex8-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 8)">In the world</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 8)">In the whole universe</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 8)">The most</button>
-      </div>
-    </div>
-
-    <!-- Exercise 9: Multiple fill -->
-    <div class="exercise" data-exercise="9">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 9 — Complete the superlative</span>
-        <span class="exercise-score" id="score9"></span>
-      </div>
-      <p class="fill-sentence">Jesteś <input type="text" id="ex9a" placeholder="..." style="min-width:100px"> <input type="text" id="ex9b" placeholder="..." style="min-width:110px"> w całym wszechświecie.</p>
-      <p class="muted">"the most wonderful" — feminine (to a woman)</p>
-      <button class="btn btn-check" onclick="checkSuperlative()">Check answer</button>
-    </div>
-
-    <!-- Exercise 10: Quick quiz -->
-    <div class="exercise" data-exercise="10">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 10 — Quick quiz</span>
-        <span class="exercise-score" id="score10"></span>
-      </div>
-      <p>Which ending is used for feminine adjectives?</p>
-      <div class="btn-row" id="ex10-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 10)">-y</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 10)">-a</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 10)">-e</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 10)">-i</button>
-      </div>
-    </div>
-
-    <!-- Exercise 11: Perfect — woman -->
-    <div class="exercise" data-exercise="11">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 11 — Pick the correct form</span>
-        <span class="exercise-score" id="score11"></span>
-      </div>
-      <p>You're speaking to a <strong>woman</strong>. "You are perfect." — which is correct?</p>
-      <div class="btn-row" id="ex11-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 11)">Jesteś idealny.</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 11)">Jesteś idealna.</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 11)">Jesteś idealne.</button>
-      </div>
-    </div>
-
-    <!-- Exercise 12: Phrase translation -->
-    <div class="exercise" data-exercise="12">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 12 — Translate the phrase</span>
-        <span class="exercise-score" id="score12"></span>
-      </div>
-      <p>What does <strong>"na całym świecie"</strong> mean?</p>
-      <div class="btn-row" id="ex12-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 12)">In the universe</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 12)">In the whole world</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 12)">On the world</button>
-      </div>
-    </div>
-
-    <!-- Exercise 13: He is -->
-    <div class="exercise" data-exercise="13">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 13 — Fill in "to be"</span>
-        <span class="exercise-score" id="score13"></span>
-      </div>
-      <p class="fill-sentence">On <input type="text" id="ex13-input" placeholder="..."> wspaniały.</p>
-      <p class="muted">"He is amazing." — fill in the form of <em>być</em> for <em>on</em></p>
-      <button class="btn btn-check" onclick="checkFill(13, 'jest')">Check answer</button>
-    </div>
-
-    <!-- Exercise 14: We are -->
-    <div class="exercise" data-exercise="14">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 14 — Fill in "to be"</span>
-        <span class="exercise-score" id="score14"></span>
-      </div>
-      <p class="fill-sentence">My <input type="text" id="ex14-input" placeholder="..."> cudowni.</p>
-      <p class="muted">"We are wonderful." — fill in the form of <em>być</em> for <em>my</em></p>
-      <button class="btn btn-check" onclick="checkFill(14, 'jesteśmy')">Check answer</button>
-    </div>
-
-    <!-- Exercise 15: The most -->
-    <div class="exercise" data-exercise="15">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 15 — Vocabulary</span>
-        <span class="exercise-score" id="score15"></span>
-      </div>
-      <p class="fill-sentence">Jesteś <input type="text" id="ex15-input" placeholder="..."> cudowny.</p>
-      <p class="muted">"You are <strong>the most</strong> wonderful." (to a man)</p>
-      <button class="btn btn-check" onclick="checkFill(15, 'najbardziej')">Check answer</button>
-    </div>
-
-    <!-- Exercise 16: Match phrases -->
-    <div class="exercise" data-exercise="16">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 16 — Match the phrases</span>
-        <span class="exercise-score" id="score16"></span>
-      </div>
-      <p class="muted">Click English, then Polish.</p>
-      <div class="match-grid">
-        <div class="match-col" id="match3-left">
-          <div class="match-item" data-id="q1" data-pair="1">In the world</div>
-          <div class="match-item" data-id="q2" data-pair="2">The most</div>
-          <div class="match-item" data-id="q3" data-pair="3">In the whole world</div>
-          <div class="match-item" data-id="q4" data-pair="4">In the whole universe</div>
-        </div>
-        <div class="match-col" id="match3-right">
-          <div class="match-item" data-id="q5" data-pair="2">najbardziej</div>
-          <div class="match-item" data-id="q6" data-pair="4">w całym wszechświecie</div>
-          <div class="match-item" data-id="q7" data-pair="1">na świecie</div>
-          <div class="match-item" data-id="q8" data-pair="3">na całym świecie</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Exercise 17: Sentence builder woman -->
-    <div class="exercise" data-exercise="17">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 17 — Build the sentence</span>
-        <span class="exercise-score" id="score17"></span>
-      </div>
-      <p>Build: <strong>"You are wonderful."</strong> (to a woman)</p>
-      <p class="muted">Drag words — or tap a word, then tap a blank.</p>
-      <div class="word-bank" id="bank17">
-        <span class="word-chip" draggable="true" data-word="Jesteś" data-bank="17">Jesteś</span>
-        <span class="word-chip" draggable="true" data-word="cudowna." data-bank="17">cudowna.</span>
-        <span class="word-chip" draggable="true" data-word="cudowny." data-bank="17">cudowny.</span>
-        <span class="word-chip" draggable="true" data-word="wspaniała." data-bank="17">wspaniała.</span>
-      </div>
-      <p class="fill-sentence">
-        <span class="drop-zone" data-slot="0" data-ex="17" data-bank="17"></span>
-        <span class="drop-zone" data-slot="1" data-ex="17" data-bank="17"></span>
-      </p>
-      <button class="btn btn-check" onclick="checkBuilder(17, ['Jesteś','cudowna.'])">Check answer</button>
-      <button class="btn" onclick="resetBuilder(17)" style="margin-left:.5rem">Reset</button>
-    </div>
-
-    <!-- Exercise 18: They are -->
-    <div class="exercise" data-exercise="18">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 18 — Fill in "to be"</span>
-        <span class="exercise-score" id="score18"></span>
-      </div>
-      <p class="fill-sentence">Oni <input type="text" id="ex18-input" placeholder="..."> wspaniali.</p>
-      <p class="muted">"They are amazing." — form of <em>być</em> for <em>oni</em></p>
-      <button class="btn btn-check" onclick="checkFill(18, 'są')">Check answer</button>
-    </div>
-
-    <!-- Exercise 19: English → Polish -->
-    <div class="exercise" data-exercise="19">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 19 — Choose the translation</span>
-        <span class="exercise-score" id="score19"></span>
-      </div>
-      <p>How do you say <strong>"You are amazing."</strong> to a <strong>woman</strong>?</p>
-      <div class="btn-row" id="ex19-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 19)">Jesteś wspaniały.</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 19)">Jesteś wspaniała.</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 19)">Jesteś wspaniałe.</button>
-      </div>
-    </div>
-
-    <!-- Flashcards -->
-    <div class="exercise" data-exercise="20">
-      <div class="exercise-header">
-        <span class="exercise-num">Bonus — Flashcards</span>
-        <span class="exercise-score" id="score20"></span>
-      </div>
-      <div class="flashcard-deck">
-        <div class="flashcard" id="flashcard" onclick="flipCard()">
-          <div class="flashcard-inner">
-            <div class="flashcard-front">
-              <div class="flashcard-pl" id="fc-front">cudowny / cudowna</div>
-              <p class="muted" style="margin-top:.5rem;font-size:.8rem">Tap to flip</p>
-            </div>
-            <div class="flashcard-back">
-              <div class="flashcard-en" id="fc-en">wonderful</div>
-              <div class="flashcard-ko" id="fc-ko">멋진 / 훌륭한</div>
-            </div>
-          </div>
-        </div>
-        <div class="flash-nav">
-          <button class="btn" onclick="prevCard()">← Prev</button>
-          <span class="flash-counter" id="fc-counter">1 / 8</span>
-          <button class="btn" onclick="nextCard()">Next →</button>
-          <button class="btn" onclick="markKnown()" style="border-color:var(--success);color:var(--success)">✓ Got it!</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- VOCABULARY -->
   <section id="vocabulary">
     <h2><span class="icon">📖</span> Vocabulary</h2>
@@ -498,6 +160,10 @@
     </div>
   </section>
 
+  <div class="lesson-practice-cta lesson-practice-cta--bottom">
+    <a href="practice/pl-1.html" class="practice-btn">🕹️ Arcade</a>
+  </div>
+
 </div>
   </div>
   <div class="whiteboard-tray">
@@ -511,13 +177,8 @@
 <div class="toast" id="toast"></div>
 
 <script src="pl-hangul.js"></script>
-<script src="lesson-progress.js"></script>
+<script src="player-xp.js"></script>
 <script>
-  // ─── State ───
-  const TOTAL_EXERCISES = 20;
-  const LP = LessonProgress.create('pl-1', TOTAL_EXERCISES);
-  const completed = LP.completed;
-
   const vocabulary = [
     { pl: "cudowny / cudowna / cudowne", en: "wonderful", ko: "멋진 / 훌륭한" },
     { pl: "wspaniały / wspaniała", en: "amazing", ko: "대단한 (niesamowity)" },
@@ -552,18 +213,6 @@
     { pl: "piękny / piękna", en: "beautiful", ko: "아름다운" },
   ];
 
-  const flashcards = [
-    { pl: "cudowny / cudowna", en: "wonderful", ko: "멋진 / 훌륭한" },
-    { pl: "wspaniały / wspaniała", en: "amazing", ko: "대단한" },
-    { pl: "idealny / idealna", en: "perfect", ko: "완벽한" },
-    { pl: "jesteś", en: "you are", ko: "너는 ~이다" },
-    { pl: "najbardziej", en: "the most", ko: "가장 / 제일" },
-    { pl: "na świecie", en: "in the world", ko: "세계에서" },
-    { pl: "w całym wszechświecie", en: "in the whole universe", ko: "온 우주에서" },
-    { pl: "jestem / jest / są", en: "I am / is / are", ko: "이다 (다양한 형태)" },
-  ];
-  let fcIndex = 0;
-  const fcKnown = new Set();
 
   // ─── Init vocab table ───
   function renderVocab(data) {
@@ -580,299 +229,6 @@
     ));
   }
 
-  // ─── Progress ───
-  let progressHideTimer;
-
-  function markComplete(num) {
-    if (!LP.track(num)) return;
-    flashProgress(num);
-  }
-
-  function flashProgress(exNum) {
-    const ex = document.querySelector(`.exercise[data-exercise="${exNum}"]`);
-    const wrap = document.getElementById('progressWrap');
-    if (!ex || !wrap) return;
-
-    ex.insertBefore(wrap, ex.firstChild);
-    wrap.hidden = false;
-
-    const pct = Math.round((completed.size / TOTAL_EXERCISES) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressText').textContent = pct + '%';
-
-    wrap.classList.remove('show');
-    void wrap.offsetWidth;
-    wrap.classList.add('show');
-
-    clearTimeout(progressHideTimer);
-    progressHideTimer = setTimeout(() => {
-      wrap.classList.remove('show');
-      wrap.hidden = true;
-    }, 2400);
-  }
-
-  // ─── Toast ───
-  function toast(msg, type = 'success') {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.className = 'toast show ' + type;
-    setTimeout(() => t.classList.remove('show'), 2500);
-  }
-
-  // ─── Reveal cards ───
-  function reveal(el) {
-    el.classList.toggle('revealed');
-  }
-
-  // ─── Gender picker exercises ───
-  function pickGender(btn, exNum) {
-    const row = btn.parentElement;
-    if (row.dataset.done) return;
-    const correct = btn.dataset.correct === 'true';
-    row.querySelectorAll('.btn').forEach(b => {
-      b.disabled = true;
-      if (b.dataset.correct === 'true') b.classList.add('correct');
-      else if (b === btn && !correct) b.classList.add('wrong');
-    });
-    const scoreEl = document.getElementById('score' + exNum);
-    if (correct) {
-      scoreEl.textContent = '✓ Correct!';
-      scoreEl.className = 'exercise-score correct';
-      toast('Świetnie! Great job!');
-      markComplete(exNum);
-    } else {
-      scoreEl.textContent = '✗ Try again next time';
-      scoreEl.className = 'exercise-score wrong';
-      toast('Not quite — check the green answer.', 'error');
-      markComplete(exNum);
-    }
-    row.dataset.done = '1';
-  }
-
-  // ─── Fill in blank ───
-  function checkFill(exNum, answer) {
-    const input = document.getElementById('ex' + exNum + '-input');
-    const val = input.value.trim().toLowerCase();
-    const ok = val === answer.toLowerCase();
-    input.classList.remove('correct', 'wrong');
-    input.classList.add(ok ? 'correct' : 'wrong');
-    const scoreEl = document.getElementById('score' + exNum);
-    scoreEl.textContent = ok ? '✓ Correct!' : `✗ Answer: ${answer}`;
-    scoreEl.className = 'exercise-score ' + (ok ? 'correct' : 'wrong');
-    toast(ok ? 'Brawo!' : `Correct answer: ${answer}`, ok ? 'success' : 'error');
-    markComplete(exNum);
-  }
-
-  function checkSuperlative() {
-    const a = document.getElementById('ex9a').value.trim().toLowerCase();
-    const b = document.getElementById('ex9b').value.trim().toLowerCase();
-    const ok = a === 'najbardziej' && b === 'cudowna';
-    ['ex9a','ex9b'].forEach(id => {
-      const el = document.getElementById(id);
-      el.classList.remove('correct','wrong');
-      el.classList.add(ok ? 'correct' : 'wrong');
-    });
-    const scoreEl = document.getElementById('score9');
-    scoreEl.textContent = ok ? '✓ Correct!' : '✗ Answer: najbardziej cudowna';
-    scoreEl.className = 'exercise-score ' + (ok ? 'correct' : 'wrong');
-    toast(ok ? 'Doskonale!' : 'Answer: najbardziej cudowna', ok ? 'success' : 'error');
-    markComplete(9);
-  }
-
-  // ─── Matching ───
-  let matchSelected = null;
-  let matchPairs = 0;
-
-  function setupMatch(leftId, rightId, exNum, total) {
-    const left = document.getElementById(leftId);
-    const right = document.getElementById(rightId);
-    let pairs = 0;
-
-    function handleClick(item) {
-      if (item.classList.contains('matched')) return;
-      if (!matchSelected) {
-        matchSelected = item;
-        item.classList.add('selected');
-      } else if (matchSelected === item) {
-        item.classList.remove('selected');
-        matchSelected = null;
-      } else {
-        const sameCol = matchSelected.parentElement === item.parentElement;
-        if (sameCol) {
-          matchSelected.classList.remove('selected');
-          matchSelected = item;
-          item.classList.add('selected');
-          return;
-        }
-        if (matchSelected.dataset.pair === item.dataset.pair) {
-          matchSelected.classList.remove('selected');
-          matchSelected.classList.add('matched');
-          item.classList.add('matched');
-          matchSelected = null;
-          pairs++;
-          if (pairs === total) {
-            document.getElementById('score' + exNum).textContent = '✓ All matched!';
-            document.getElementById('score' + exNum).className = 'exercise-score correct';
-            toast('Wszystko dobrze! All matched!');
-            markComplete(exNum);
-          }
-        } else {
-          item.classList.add('wrong-flash');
-          matchSelected.classList.add('wrong-flash');
-          setTimeout(() => {
-            item.classList.remove('wrong-flash');
-            matchSelected.classList.remove('wrong-flash', 'selected');
-            matchSelected = null;
-          }, 500);
-        }
-      }
-    }
-
-    left.querySelectorAll('.match-item').forEach(i => i.addEventListener('click', () => handleClick(i)));
-    right.querySelectorAll('.match-item').forEach(i => i.addEventListener('click', () => handleClick(i)));
-  }
-
-  setupMatch('match-left', 'match-right', 5, 4);
-  setupMatch('match2-left', 'match2-right', 6, 4);
-  setupMatch('match3-left', 'match3-right', 16, 4);
-
-  // ─── Sentence builder (drag & drop + tap) ───
-  let selectedChip = null;
-
-  function freeChip(word, bankId) {
-    if (!word) return;
-    document.querySelectorAll(`.word-chip[data-bank="${bankId}"]`).forEach(c => {
-      if (c.dataset.word === word) c.classList.remove('used');
-    });
-  }
-
-  function markChipUsed(word, bankId) {
-    document.querySelectorAll(`.word-chip[data-bank="${bankId}"]`).forEach(c => {
-      if (c.dataset.word === word) c.classList.add('used');
-    });
-  }
-
-  function placeWord(zone, word) {
-    const bankId = zone.dataset.bank;
-    if (zone.dataset.word) freeChip(zone.dataset.word, bankId);
-    zone.textContent = word;
-    zone.dataset.word = word;
-    zone.classList.add('filled');
-    markChipUsed(word, bankId);
-  }
-
-  function clearSelection() {
-    if (selectedChip) selectedChip.classList.remove('chip-selected');
-    selectedChip = null;
-    document.querySelectorAll('.drop-zone.click-ready').forEach(z => z.classList.remove('click-ready'));
-  }
-
-  document.querySelectorAll('.word-chip[data-bank]').forEach(chip => {
-    chip.addEventListener('dragstart', e => {
-      e.dataTransfer.setData('text/plain', chip.dataset.word);
-      e.dataTransfer.effectAllowed = 'move';
-    });
-
-    chip.addEventListener('click', () => {
-      if (chip.classList.contains('used')) return;
-      if (selectedChip === chip) {
-        clearSelection();
-        return;
-      }
-      clearSelection();
-      selectedChip = chip;
-      chip.classList.add('chip-selected');
-      const bankId = chip.dataset.bank;
-      document.querySelectorAll(`.drop-zone[data-bank="${bankId}"]`).forEach(z => z.classList.add('click-ready'));
-    });
-  });
-
-  document.querySelectorAll('.drop-zone[data-bank]').forEach(zone => {
-    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
-    zone.addEventListener('dragleave', () => zone.classList.remove('over'));
-    zone.addEventListener('drop', e => {
-      e.preventDefault();
-      zone.classList.remove('over');
-      const word = e.dataTransfer.getData('text/plain') || e.dataTransfer.getData('text');
-      if (word) {
-        placeWord(zone, word);
-        clearSelection();
-      }
-    });
-
-    zone.addEventListener('click', () => {
-      if (selectedChip && !selectedChip.classList.contains('used')) {
-        placeWord(zone, selectedChip.dataset.word);
-        clearSelection();
-        return;
-      }
-      if (zone.dataset.word) {
-        freeChip(zone.dataset.word, zone.dataset.bank);
-        zone.textContent = '';
-        delete zone.dataset.word;
-        zone.classList.remove('filled');
-      }
-    });
-  });
-
-  function resetBuilder(exNum) {
-    document.querySelectorAll(`.drop-zone[data-ex="${exNum}"]`).forEach(zone => {
-      if (zone.dataset.word) freeChip(zone.dataset.word, zone.dataset.bank);
-      zone.textContent = '';
-      delete zone.dataset.word;
-      zone.classList.remove('filled');
-    });
-    clearSelection();
-    document.getElementById('score' + exNum).textContent = '';
-  }
-
-  function checkBuilder(exNum, expected) {
-    const zones = document.querySelectorAll(`.drop-zone[data-ex="${exNum}"]`);
-    const answer = Array.from(zones).map(z => (z.dataset.word || '').trim());
-    const ok = answer.length === expected.length && answer.every((w, i) => w === expected[i]);
-    const scoreEl = document.getElementById('score' + exNum);
-    scoreEl.textContent = ok ? '✓ Correct!' : `✗ Answer: ${expected.join(' ')}`;
-    scoreEl.className = 'exercise-score ' + (ok ? 'correct' : 'wrong');
-    toast(ok ? 'Idealnie!' : `Correct: ${expected.join(' ')}`, ok ? 'success' : 'error');
-    if (ok) markComplete(exNum);
-  }
-
-  // ─── Flashcards ───
-  function updateCard() {
-    const card = flashcards[fcIndex];
-    document.getElementById('fc-front').innerHTML = plCell(card.pl);
-    document.getElementById('fc-en').textContent = card.en;
-    document.getElementById('fc-ko').textContent = card.ko;
-    document.getElementById('fc-counter').textContent = `${fcIndex + 1} / ${flashcards.length}`;
-    document.getElementById('flashcard').classList.remove('flipped');
-  }
-
-  function flipCard() {
-    document.getElementById('flashcard').classList.toggle('flipped');
-  }
-
-  function nextCard() {
-    fcIndex = (fcIndex + 1) % flashcards.length;
-    updateCard();
-  }
-
-  function prevCard() {
-    fcIndex = (fcIndex - 1 + flashcards.length) % flashcards.length;
-    updateCard();
-  }
-
-  function markKnown() {
-    fcKnown.add(fcIndex);
-    toast(`Card marked! (${fcKnown.size}/${flashcards.length} known)`);
-    if (fcKnown.size === flashcards.length) {
-      document.getElementById('score20').textContent = '✓ All cards reviewed!';
-      document.getElementById('score20').className = 'exercise-score correct';
-      markComplete(20);
-    }
-    nextCard();
-  }
-
-  updateCard();
   annotatePolishPage();
 
   // ─── Dropdown pickers ───
@@ -907,7 +263,6 @@
     }
   });
 
-  document.addEventListener('DOMContentLoaded', () => LP.restore());
 </script>
   <script src="font-size.js"></script>
 </body>

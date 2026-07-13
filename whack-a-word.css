@@ -1,0 +1,224 @@
+/* Whack-a-Word mini-game */
+.whack-root {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.whack-shell {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, rgba(139, 90, 43, 0.12), rgba(88, 204, 2, 0.06));
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.whack-hud {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.65);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.whack-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3.5rem;
+}
+
+.whack-stat-label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.45);
+  line-height: 1;
+}
+
+.whack-stat strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  color: #8b5a2b;
+}
+
+.whack-hearts {
+  display: flex;
+  gap: 0.15rem;
+  margin-left: auto;
+  font-size: 1rem;
+}
+
+.whack-heart {
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.whack-heart.lost {
+  opacity: 0.25;
+  filter: grayscale(1);
+  transform: scale(0.85);
+}
+
+.whack-prompt {
+  text-align: center;
+  padding: 0.85rem 1rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.2rem;
+  background: rgba(255, 200, 0, 0.18);
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.08);
+  transition: background 0.25s;
+}
+
+.whack-prompt strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.45rem;
+  color: #8b5a2b;
+}
+
+.whack-prompt.whack-flash-ok {
+  background: rgba(88, 204, 2, 0.28);
+}
+
+.whack-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+  padding: 0.85rem;
+  background: linear-gradient(180deg, rgba(101, 67, 33, 0.08), rgba(101, 67, 33, 0.16));
+}
+
+.whack-board.whack-shake {
+  animation: whackShake 0.4s ease;
+}
+
+@keyframes whackShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.whack-hole {
+  position: relative;
+  aspect-ratio: 1;
+  min-height: 5.5rem;
+  border: none;
+  border-radius: 50% / 40%;
+  background: radial-gradient(ellipse at 50% 80%, #3d2817 0%, #5c3d1e 45%, #8b5a2b 100%);
+  box-shadow: inset 0 8px 14px rgba(0, 0, 0, 0.45), 0 3px 0 rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  overflow: visible;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.whack-mole {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  width: 72%;
+  height: 28%;
+  transform: translateX(-50%) translateY(120%);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  transition: opacity 0.15s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.whack-word {
+  position: absolute;
+  left: 50%;
+  bottom: 42%;
+  transform: translateX(-50%) translateY(130%) scale(0.7);
+  opacity: 0;
+  max-width: 92%;
+  padding: 0.3rem 0.45rem;
+  border-radius: 10px;
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.88rem;
+  line-height: 1.15;
+  color: #222;
+  text-align: center;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  transition: transform 0.22s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.18s;
+  word-break: break-word;
+}
+
+.whack-word.ko {
+  font-family: 'Noto Sans KR', 'Patrick Hand', sans-serif;
+  font-size: 0.82rem;
+}
+
+.whack-word.long {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.35rem;
+}
+
+.whack-hole.up .whack-mole {
+  opacity: 1;
+}
+
+.whack-hole.up .whack-word {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.whack-hole.correct-flash .whack-word {
+  background: rgba(88, 204, 2, 0.35);
+  border-color: var(--duo-green, #58cc02);
+  animation: whackPop 0.35s ease forwards;
+}
+
+.whack-hole.wrong-flash .whack-word {
+  background: rgba(255, 75, 75, 0.25);
+  border-color: #ff4b4b;
+  animation: whackPop 0.3s ease forwards;
+}
+
+@keyframes whackPop {
+  50% { transform: translateX(-50%) translateY(-8px) scale(1.08); }
+  100% { transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+.whack-hint {
+  margin: 0;
+  padding: 0.45rem 0.75rem 0.65rem;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.92rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.whack-footer {
+  padding: 0 0.65rem 0.65rem;
+  text-align: center;
+}
+
+.whack-restart {
+  display: none;
+  padding: 0.55rem 1.25rem;
+  border: none;
+  border-radius: 12px;
+  background: #8b5a2b;
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #5c3d1e;
+}
+
+.whack-restart:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 520px) {
+  .whack-hole {
+    min-height: 4.75rem;
+  }
+  .whack-word {
+    font-size: 0.78rem;
+  }
+}

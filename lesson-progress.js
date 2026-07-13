@@ -7,12 +7,12 @@
   const PREFIX = 'pp-lesson:';
 
   const LESSONS = [
-    { id: 'pl-1', title: 'Polish L1 — Compliments', href: 'index.html', track: 'Polish', total: 20, practice: 'index.html', theory: 'lesson-1-theory.html' },
-    { id: 'pl-2', title: 'Polish L2 — Feelings & się', href: 'lesson-2.html', track: 'Polish', total: 20, practice: 'lesson-2.html', theory: 'lesson-2-theory.html' },
-    { id: 'pl-3', title: 'Polish L3 — Hugs', href: 'lesson-3.html', track: 'Polish', total: 20, practice: 'lesson-3.html', theory: 'lesson-3-theory.html' },
-    { id: 'ko-1', title: 'Korean L1 — Topic marker', href: 'Korean/index.html', track: 'Korean', total: 20, practice: 'Korean/index.html', theory: 'Korean/lesson-1-theory.html' },
-    { id: 'ko-2', title: 'Korean L2 — Happy & 너무', href: 'Korean/lesson-2.html', track: 'Korean', total: 20, practice: 'Korean/lesson-2.html', theory: 'Korean/lesson-2-theory.html' },
-    { id: 'ko-3', title: 'Korean L3 — Hugs', href: 'Korean/lesson-3.html', track: 'Korean', total: 20, practice: 'Korean/lesson-3.html', theory: 'Korean/lesson-3-theory.html' }
+    { id: 'pl-1', title: 'Polish L1 — Compliments', href: 'index.html', track: 'Polish', total: 12, practice: 'practice/pl-1.html', theory: 'lesson-1-theory.html' },
+    { id: 'pl-2', title: 'Polish L2 — Feelings & się', href: 'lesson-2.html', track: 'Polish', total: 12, practice: 'practice/pl-2.html', theory: 'lesson-2-theory.html' },
+    { id: 'pl-3', title: 'Polish L3 — Hugs', href: 'lesson-3.html', track: 'Polish', total: 12, practice: 'practice/pl-3.html', theory: 'lesson-3-theory.html' },
+    { id: 'ko-1', title: 'Korean L1 — Topic marker', href: 'Korean/index.html', track: 'Korean', total: 12, practice: 'Korean/practice/ko-1.html', theory: 'Korean/lesson-1-theory.html' },
+    { id: 'ko-2', title: 'Korean L2 — Happy & 너무', href: 'Korean/lesson-2.html', track: 'Korean', total: 12, practice: 'Korean/practice/ko-2.html', theory: 'Korean/lesson-2-theory.html' },
+    { id: 'ko-3', title: 'Korean L3 — Hugs', href: 'Korean/lesson-3.html', track: 'Korean', total: 12, practice: 'Korean/practice/ko-3.html', theory: 'Korean/lesson-3-theory.html' }
   ];
 
   const PRAISES = [
@@ -39,15 +39,15 @@
   function load(lessonId) {
     try {
       const raw = localStorage.getItem(storageKey(lessonId));
-      if (!raw) return { completed: [], total: 20 };
+      if (!raw) return { completed: [], total: 12 };
       const data = JSON.parse(raw);
       return {
         completed: Array.isArray(data.completed) ? data.completed : [],
-        total: data.total || 20,
+        total: data.total || 12,
         updated: data.updated || null
       };
     } catch {
-      return { completed: [], total: 20 };
+      return { completed: [], total: 12 };
     }
   }
 
@@ -69,7 +69,7 @@
   function create(lessonId, totalExercises) {
     const data = load(lessonId);
     const completed = new Set(data.completed);
-    const total = totalExercises || data.total || 20;
+    const total = totalExercises || data.total || 12;
 
     function persist() {
       save(lessonId, { completed: [...completed], total });
@@ -86,6 +86,17 @@
       const flashText = document.getElementById('progressText');
       if (flashFill) flashFill.style.width = pct + '%';
       if (flashText) flashText.textContent = pct + '%';
+    }
+
+    function arcadeStatsParent(header) {
+      if (!header.classList.contains('arcade-header')) return header;
+      let wrap = header.querySelector('.arcade-header-stats');
+      if (!wrap) {
+        wrap = document.createElement('div');
+        wrap.className = 'arcade-header-stats';
+        header.appendChild(wrap);
+      }
+      return wrap;
     }
 
     function ensurePersistBar() {
@@ -105,7 +116,8 @@
         '<span id="persistPct">0%</span>' +
         '</div>' +
         '<div class="progress-bar"><div class="progress-fill" id="persistFill"></div></div>';
-      header.appendChild(bar);
+      const parent = arcadeStatsParent(header);
+      parent.insertBefore(bar, parent.firstChild);
       updatePersistBar();
     }
 
@@ -141,12 +153,17 @@
       return true;
     }
 
+    function reset() {
+      completed.clear();
+      persist();
+    }
+
     function restore() {
       ensurePersistBar();
       completed.forEach(restoreExercise);
     }
 
-    return { completed, total, track, restore, updatePersistBar, lessonId };
+    return { completed, total, track, reset, restore, updatePersistBar, lessonId };
   }
 
   function getAllLessons() {

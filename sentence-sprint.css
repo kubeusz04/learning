@@ -1,0 +1,236 @@
+/* Sentence Sprint mini-game */
+.sprint-root {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.sprint-shell {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, rgba(28, 176, 246, 0.1), rgba(206, 130, 255, 0.08));
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.sprint-hud {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.65);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.sprint-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3.5rem;
+}
+
+.sprint-stat-label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.45);
+  line-height: 1;
+}
+
+.sprint-stat strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  color: var(--duo-blue, #1cb0f6);
+}
+
+.sprint-hearts {
+  display: flex;
+  gap: 0.15rem;
+  margin-left: auto;
+  font-size: 1rem;
+}
+
+.sprint-heart {
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.sprint-heart.lost {
+  opacity: 0.25;
+  filter: grayscale(1);
+  transform: scale(0.85);
+}
+
+.sprint-prompt {
+  text-align: center;
+  padding: 0.75rem 1rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.15rem;
+  background: rgba(255, 255, 255, 0.55);
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.08);
+  transition: background 0.25s;
+}
+
+.sprint-prompt strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: #6b4c9a;
+}
+
+.sprint-prompt.sprint-flash-ok {
+  background: rgba(88, 204, 2, 0.25);
+}
+
+.sprint-slots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.75rem;
+  min-height: 2.75rem;
+  background: rgba(255, 255, 255, 0.35);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.sprint-slot {
+  padding: 0.25rem 0.55rem;
+  border-radius: 10px;
+  border: 2px dashed rgba(0, 0, 0, 0.15);
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.sprint-slot.next {
+  border-color: var(--duo-blue, #1cb0f6);
+  color: var(--duo-blue, #1cb0f6);
+  animation: sprintPulse 1s ease infinite;
+}
+
+.sprint-slot.filled {
+  border-style: solid;
+  border-color: var(--duo-green, #58cc02);
+  color: #222;
+  background: rgba(88, 204, 2, 0.15);
+}
+
+@keyframes sprintPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.sprint-arena {
+  position: relative;
+  padding: 0.35rem 0;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.03) 0,
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 25%
+  );
+}
+
+.sprint-arena.sprint-shake {
+  animation: sprintShake 0.4s ease;
+}
+
+@keyframes sprintShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.sprint-lane {
+  position: relative;
+  height: 3.1rem;
+  margin: 0.35rem 0.5rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.sprint-chip {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0.35rem 0.65rem;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  background: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  line-height: 1.15;
+  color: #222;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  z-index: 2;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.sprint-chip.ko {
+  font-family: 'Noto Sans KR', 'Patrick Hand', sans-serif;
+  font-size: 0.92rem;
+}
+
+.sprint-chip.long {
+  font-size: 0.82rem;
+  padding: 0.3rem 0.5rem;
+}
+
+.sprint-chip:hover {
+  border-color: var(--duo-blue, #1cb0f6);
+}
+
+.sprint-chip.hit-ok {
+  background: rgba(88, 204, 2, 0.35);
+  border-color: var(--duo-green, #58cc02);
+}
+
+.sprint-chip.hit-bad {
+  background: rgba(255, 75, 75, 0.25);
+  border-color: #ff4b4b;
+}
+
+.sprint-hint {
+  margin: 0;
+  padding: 0.45rem 0.75rem 0.65rem;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.92rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.sprint-footer {
+  padding: 0 0.65rem 0.65rem;
+  text-align: center;
+}
+
+.sprint-restart {
+  display: none;
+  padding: 0.55rem 1.25rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--duo-blue, #1cb0f6);
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #1899d6;
+}
+
+.sprint-restart:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 520px) {
+  .sprint-lane {
+    height: 2.85rem;
+  }
+  .sprint-chip {
+    font-size: 0.9rem;
+  }
+}

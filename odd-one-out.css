@@ -1,0 +1,157 @@
+/* Odd One Out */
+.odd-root {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.odd-shell {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, rgba(255, 200, 0, 0.12), rgba(255, 75, 75, 0.08));
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.odd-hud {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.65);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.odd-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3rem;
+}
+
+.odd-stat-label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.72rem;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.odd-stat strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: #e67e22;
+}
+
+.odd-hearts {
+  display: flex;
+  gap: 0.15rem;
+  margin-left: auto;
+  font-size: 1rem;
+}
+
+.odd-heart.lost {
+  opacity: 0.25;
+  filter: grayscale(1);
+  transform: scale(0.85);
+}
+
+.odd-prompt {
+  margin: 0;
+  padding: 0.75rem 1rem 0.5rem;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 1.45rem;
+  color: #333;
+}
+
+.odd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+  padding: 0.35rem 0.75rem 0.65rem;
+}
+
+.odd-word {
+  min-height: 4.5rem;
+  padding: 0.65rem 0.5rem;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  background: linear-gradient(145deg, #fff 0%, #fff8e8 100%);
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  text-align: center;
+  word-break: break-word;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.08);
+  transition: transform 0.12s, border-color 0.12s, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.odd-word.pl {
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+}
+
+.odd-word.ko {
+  font-family: 'Noto Sans KR', 'Patrick Hand', sans-serif;
+  font-size: 0.95rem;
+}
+
+.odd-word.long {
+  font-size: 0.88rem;
+}
+
+.odd-word:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: #e67e22;
+}
+
+.odd-word.correct {
+  background: rgba(88, 204, 2, 0.25);
+  border-color: var(--duo-green, #58cc02);
+}
+
+.odd-word.wrong {
+  background: rgba(255, 75, 75, 0.2);
+  border-color: #ff4b4b;
+}
+
+.odd-word:disabled {
+  cursor: default;
+}
+
+.odd-msg {
+  margin: 0;
+  padding: 0 0.75rem 0.35rem;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.55);
+  min-height: 1.2rem;
+  line-height: 1.35;
+}
+
+.odd-footer {
+  text-align: center;
+  padding: 0 0.65rem 0.65rem;
+}
+
+.odd-restart {
+  padding: 0.5rem 1.15rem;
+  border: none;
+  border-radius: 12px;
+  background: #e67e22;
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #c0651a;
+}
+
+@media (max-width: 380px) {
+  .odd-word {
+    min-height: 3.75rem;
+    font-size: 0.92rem;
+  }
+}

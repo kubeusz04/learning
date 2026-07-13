@@ -1,0 +1,196 @@
+/* Word Rain mini-game */
+.rain-shell {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(180deg, rgba(28, 176, 246, 0.1), rgba(88, 204, 2, 0.06));
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.rain-hud {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.65);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.rain-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3.5rem;
+}
+
+.rain-stat-label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.45);
+  line-height: 1;
+}
+
+.rain-stat strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.35rem;
+  color: var(--duo-blue, #1cb0f6);
+}
+
+.rain-hearts {
+  display: flex;
+  gap: 0.15rem;
+  margin-left: auto;
+  font-size: 1rem;
+}
+
+.rain-heart {
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.rain-heart.lost {
+  opacity: 0.25;
+  filter: grayscale(1);
+  transform: scale(0.85);
+}
+
+.rain-prompt {
+  text-align: center;
+  padding: 0.85rem 1rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.2rem;
+  background: rgba(255, 200, 0, 0.15);
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.08);
+  transition: background 0.25s;
+}
+
+.rain-prompt strong {
+  font-family: 'Caveat', cursive;
+  font-size: 1.45rem;
+  color: var(--marker-blue, #1cb0f6);
+}
+
+.rain-prompt.rain-flash-ok {
+  background: rgba(88, 204, 2, 0.25);
+}
+
+.rain-arena {
+  position: relative;
+  height: min(52vh, 420px);
+  min-height: 280px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(28, 176, 246, 0.08));
+  touch-action: manipulation;
+}
+
+.rain-arena.rain-shake {
+  animation: rainShake 0.4s ease;
+}
+
+@keyframes rainShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+.rain-ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--duo-green, #58cc02), var(--duo-blue, #1cb0f6));
+  opacity: 0.55;
+}
+
+.rain-drop {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0.4rem 0.55rem;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  background: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  color: #222;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+  transition: transform 0.12s, background 0.12s, border-color 0.12s;
+  z-index: 2;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rain-drop.ko {
+  font-family: 'Noto Sans KR', 'Patrick Hand', sans-serif;
+  font-size: 0.95rem;
+}
+
+.rain-drop.long {
+  font-size: 0.82rem;
+  padding: 0.35rem 0.45rem;
+}
+
+.rain-drop:hover {
+  border-color: var(--duo-blue, #1cb0f6);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+.rain-drop.hit-correct {
+  background: rgba(88, 204, 2, 0.35);
+  border-color: var(--duo-green, #58cc02);
+  animation: rainPop 0.35s ease forwards;
+}
+
+.rain-drop.hit-wrong {
+  background: rgba(255, 75, 75, 0.2);
+  border-color: #ff4b4b;
+  animation: rainPop 0.25s ease forwards;
+}
+
+@keyframes rainPop {
+  to {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+.rain-root {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.rain-footer {
+  padding: 0.65rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.rain-restart {
+  display: none;
+  padding: 0.55rem 1.25rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--duo-blue, #1cb0f6);
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #1899d6;
+}
+
+.rain-restart:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 520px) {
+  .rain-arena {
+    min-height: 240px;
+    height: 45vh;
+  }
+  .rain-drop {
+    font-size: 0.95rem;
+  }
+}

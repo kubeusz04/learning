@@ -8,7 +8,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Kalam:wght@300;400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="whiteboard.css">
+  <link rel="stylesheet" href="player-xp.css">
+  <link rel="stylesheet" href="practice.css">
   <link rel="stylesheet" href="lesson-extras.css">
+  <link rel="stylesheet" href="korean.css">
 </head>
 <body>
 
@@ -22,35 +25,18 @@
   <header>
     <div class="home-link-wrap"><a href="home.html" class="home-link">🏠 Home</a></div>
     <h1>Hugs &amp; <em>przytulać</em></h1>
-    <p class="subtitle">Ask for a hug, say you're hugging someone &amp; use <em>przytul mnie</em></p>
-    <p class="board-date">Topic: przytulenie · Chcę przytulasa · present &amp; future · <a href="Korean/lesson-3.html" style="color:var(--marker-purple)">Korean L3 — hugs</a> · <a href="Korean/transcribe.html" style="color:var(--marker-purple)">Polish ↔ Korean translator</a></p>
+    <p class="subtitle">Hugs, sweet nicknames, big love phrases &amp; <em>przytul mnie</em></p>
+    <p class="board-date">Topic: przytulenie · Chcę przytulasa · present &amp; future</p>
   </header>
 
-  <div class="progress-wrap" id="progressWrap" aria-live="polite" hidden>
-    <div class="progress-label">
-      <span id="progressText">0%</span>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="lesson-practice-cta lesson-practice-cta--top">
+    <a href="practice/pl-3.html" class="practice-btn">🕹️ Arcade</a>
   </div>
 
   <!-- LESSON SUMMARY -->
   <section id="summary">
     <div class="section-head">
       <h2><span class="icon">📋</span> Lesson Summary</h2>
-      <div class="summary-picker board-picker" id="summaryPicker">
-        <button type="button" class="summary-picker-btn" aria-expanded="false" aria-haspopup="listbox">
-          Basic
-          <span class="summary-picker-chevron" aria-hidden="true">▾</span>
-        </button>
-        <ul class="summary-picker-menu" role="listbox">
-          <li class="picker-current" role="option" aria-selected="true">
-            <span class="picker-current">Basic — quick overview</span>
-          </li>
-          <li role="option">
-            <a href="lesson-3-theory.html">Full explanation →</a>
-          </li>
-        </ul>
-      </div>
     </div>
     <div class="summary-grid">
       <div class="summary-item">
@@ -67,11 +53,19 @@
       </div>
       <div class="summary-item">
         <span class="summary-num">4</span>
-        <div><strong>Now:</strong> <em>Przytulam cię</em> / <em>Tulę cię</em> = I'm hugging you.</div>
+        <div><strong>Now &amp; future:</strong> <em>Przytulam cię</em> · <em>Przytulę cię</em> = I'm / I'll hug you.</div>
       </div>
       <div class="summary-item">
         <span class="summary-num">5</span>
-        <div><strong>Future:</strong> <em>Przytulę cię</em> = I'll hug you.</div>
+        <div><strong>Nicknames:</strong> <em>skarbie</em> · <em>kotku</em> · <em>misiu</em> — sweet words for someone close.</div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-num">6</span>
+        <div><strong>Big love line:</strong> <em>Kocham cię bardziej niż niebo, ziemię i cały wszechświat razem wzięty!</em></div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-num">7</span>
+        <div><strong><em>człowiek</em> vs <em>ludzie</em>:</strong> one person vs people (plural only).</div>
       </div>
     </div>
 
@@ -100,7 +94,7 @@
       <div class="gender-chip f"><strong>mnie</strong><br>me</div>
       <div class="gender-chip n"><strong>cię</strong><br>you (object)</div>
     </div>
-    <p class="muted" style="margin-top:.5rem"><em>Przytul</em> = hug! (command to one person) · <a href="lesson-3-theory.html#imperative">Full guide →</a></p>
+    <p class="muted" style="margin-top:.5rem"><em>Przytul</em> = hug! (command to one person)</p>
 
     <h3 class="lesson-block-title">4 · Present &amp; future</h3>
     <div class="gender-rule gender-rule-4">
@@ -112,6 +106,41 @@
     <ul class="sie-examples" style="margin:.5rem 0 0 1.25rem">
       <li><em>Przytulam cię bardzo mocno.</em> = I'm hugging you very tight.</li>
       <li>Two verbs: <em>przytulać</em> (to hug) · <em>tulić</em> (to cuddle)</li>
+    </ul>
+
+    <h3 class="lesson-block-title">5 · Sweet nicknames</h3>
+    <p class="lesson-lead muted">Vocative — you call someone directly. Very affectionate, like “sweetie” or “honey”.</p>
+    <div class="gender-rule gender-rule-4">
+      <div class="gender-chip f"><strong>Skarbie!</strong><br>darling · treasure</div>
+      <div class="gender-chip m"><strong>Kotku!</strong><br>kitty · little cat</div>
+      <div class="gender-chip n"><strong>Misiu!</strong><br>bear · teddy</div>
+      <div class="gender-chip f"><strong>from</strong><br>skarb · kot · miś</div>
+    </div>
+    <p class="muted" style="margin-top:.5rem"></p>
+
+    <h3 class="lesson-block-title">6 · Big love phrase</h3>
+    <div class="bonus-fact">
+      <strong>💕 Kocham cię bardziej niż niebo, ziemię i cały wszechświat razem wzięty!</strong>
+      <p style="margin:.35rem 0 0">I love you more than the sky, the earth and the whole universe combined!</p>
+      <p class="ko" style="margin:.5rem 0 0;font-size:1.05rem">하늘만큼 땅만큼 우주만큼 사랑해</p>
+      <p class="muted" style="margin:.25rem 0 0">Korean: “I love you as much as the sky, the earth and the universe.”</p>
+    </div>
+
+    <h3 class="lesson-block-title">7 · <em>Człowiek</em> vs <em>ludzie</em></h3>
+    <div class="explain-compare">
+      <div>
+        <em>człowiek</em><br>
+        <span class="muted">one human / a person · singular</span>
+      </div>
+      <div>
+        <em>ludzie</em><br>
+        <span class="muted">people · plural only</span>
+      </div>
+    </div>
+    <ul class="sie-examples" style="margin:.5rem 0 0 1.25rem">
+      <li><em>To dobry człowiek.</em> = That's a good person.</li>
+      <li><em>Ci ludzie są mili.</em> = These people are nice.</li>
+      <li><em>ludzie</em> has no singular — use <em>człowiek</em> for one person.</li>
     </ul>
   </section>
 
@@ -156,313 +185,43 @@
         <div class="example-hint">bardzo mocno = very tightly</div>
       </div>
     </div>
+    <div class="example-pair">
+      <div class="example-card" onclick="reveal(this)">
+        <div class="example-en">Darling / sweetie</div>
+        <div class="example-pl">Skarbie!</div>
+        <div class="example-hint">from skarb = treasure</div>
+      </div>
+      <div class="example-card" onclick="reveal(this)">
+        <div class="example-en">Kitty (nickname)</div>
+        <div class="example-pl">Kotku!</div>
+        <div class="example-hint">from kot = cat</div>
+      </div>
+    </div>
+    <div class="example-pair">
+      <div class="example-card" onclick="reveal(this)">
+        <div class="example-en">Bear / teddy (nickname)</div>
+        <div class="example-pl">Misiu!</div>
+        <div class="example-hint">from miś = teddy bear</div>
+      </div>
+      <div class="example-card" onclick="reveal(this)">
+        <div class="example-en">I love you more than sky, earth &amp; universe combined!</div>
+        <div class="example-pl">Kocham cię bardziej niż niebo, ziemię i cały wszechświat razem wzięty!</div>
+        <div class="example-hint ko">하늘만큼 땅만큼 우주만큼 사랑해</div>
+      </div>
+    </div>
+    <div class="example-pair">
+      <div class="example-card" onclick="reveal(this)">
+        <div class="example-en">a person / human (one)</div>
+        <div class="example-pl">człowiek</div>
+        <div class="example-hint">singular</div>
+      </div>
+      <div class="example-card" onclick="reveal(this)">
+        <div class="example-en">people</div>
+        <div class="example-pl">ludzie</div>
+        <div class="example-hint">plural only — no singular form</div>
+      </div>
+    </div>
     <p class="tap-hint">👆 Tap cards to practice recall</p>
-  </section>
-
-  <!-- EXERCISES -->
-  <section id="exercises">
-    <h2><span class="icon">✏️</span> Interactive Exercises</h2>
-    <p class="muted">Complete the exercises below.</p>
-
-    <div class="exercise" data-exercise="1">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 1 — The noun</span>
-        <span class="exercise-score" id="score1"></span>
-      </div>
-      <p>What is <strong>"a hug"</strong> (noun) in Polish?</p>
-      <div class="btn-row" id="ex1-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 1)">przytulam</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 1)">przytulenie</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 1)">przytulę</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="2">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 2 — I want a hug</span>
-        <span class="exercise-score" id="score2"></span>
-      </div>
-      <p>How do you say <strong>"I want a hug"</strong>?</p>
-      <div class="btn-row" id="ex2-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 2)">Przytul mnie.</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 2)">Chcę przytulasa.</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 2)">Przytulam cię.</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="3">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 3 — Fill in chcę</span>
-        <span class="exercise-score" id="score3"></span>
-      </div>
-      <p class="fill-sentence"><input type="text" id="ex3-input" placeholder="..."> przytulasa.</p>
-      <p class="muted">"I want a hug." — don't forget <strong>ę</strong></p>
-      <button class="btn btn-check" onclick="checkFill(3, 'chcę')">Check answer</button>
-    </div>
-
-    <div class="exercise" data-exercise="4">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 4 — Hug me!</span>
-        <span class="exercise-score" id="score4"></span>
-      </div>
-      <p>How do you say <strong>"Hug me"</strong>?</p>
-      <div class="btn-row" id="ex4-options">
-        <button class="btn" data-correct="true" onclick="pickGender(this, 4)">Przytul mnie.</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 4)">Chcę przytulasa.</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 4)">Przytulę cię.</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="5">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 5 — Match the phrases</span>
-        <span class="exercise-score" id="score5"></span>
-      </div>
-      <p class="muted">Click English, then Polish.</p>
-      <div class="match-grid">
-        <div class="match-col" id="match-left">
-          <div class="match-item" data-id="a" data-pair="1">I want a hug.</div>
-          <div class="match-item" data-id="b" data-pair="2">Hug me.</div>
-          <div class="match-item" data-id="c" data-pair="3">I'm hugging you.</div>
-          <div class="match-item" data-id="d" data-pair="4">I'll hug you.</div>
-        </div>
-        <div class="match-col" id="match-right">
-          <div class="match-item" data-id="e" data-pair="3">Przytulam cię.</div>
-          <div class="match-item" data-id="f" data-pair="1">Chcę przytulasa.</div>
-          <div class="match-item" data-id="g" data-pair="4">Przytulę cię.</div>
-          <div class="match-item" data-id="h" data-pair="2">Przytul mnie.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="6">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 6 — Fill in mnie</span>
-        <span class="exercise-score" id="score6"></span>
-      </div>
-      <p class="fill-sentence">Przytul <input type="text" id="ex6-input" placeholder="...">.</p>
-      <p class="muted">"Hug me."</p>
-      <button class="btn btn-check" onclick="checkFill(6, 'mnie')">Check answer</button>
-    </div>
-
-    <div class="exercise" data-exercise="7">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 7 — Present tense</span>
-        <span class="exercise-score" id="score7"></span>
-      </div>
-      <p>How do you say <strong>"I'm hugging you"</strong> with <em>przytulać</em>?</p>
-      <div class="btn-row" id="ex7-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 7)">Przytulę cię.</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 7)">Przytulam cię.</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 7)">Przytul mnie.</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="8">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 8 — Tulę cię</span>
-        <span class="exercise-score" id="score8"></span>
-      </div>
-      <p><strong>Tulę cię</strong> also means "I'm hugging you" — which verb is it?</p>
-      <div class="btn-row" id="ex8-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 8)">przytulać</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 8)">tulić</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 8)">chcieć</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="9">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 9 — Fill in przytulam</span>
-        <span class="exercise-score" id="score9"></span>
-      </div>
-      <p class="fill-sentence"><input type="text" id="ex9-input" placeholder="..." style="min-width:110px"> cię.</p>
-      <p class="muted">"I'm hugging you." (I hug)</p>
-      <button class="btn btn-check" onclick="checkFill(9, 'przytulam')">Check answer</button>
-    </div>
-
-    <div class="exercise" data-exercise="10">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 10 — Future tense</span>
-        <span class="exercise-score" id="score10"></span>
-      </div>
-      <p>How do you say <strong>"I'll hug you"</strong>?</p>
-      <div class="btn-row" id="ex10-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 10)">Przytulam cię.</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 10)">Przytulę cię.</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 10)">Tulę cię.</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="11">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 11 — Fill in przytulę</span>
-        <span class="exercise-score" id="score11"></span>
-      </div>
-      <p class="fill-sentence"><input type="text" id="ex11-input" placeholder="..." style="min-width:110px"> cię.</p>
-      <p class="muted">"I'll hug you."</p>
-      <button class="btn btn-check" onclick="checkFill(11, 'przytulę')">Check answer</button>
-    </div>
-
-    <div class="exercise" data-exercise="12">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 12 — Match tenses</span>
-        <span class="exercise-score" id="score12"></span>
-      </div>
-      <p class="muted">Click English, then Polish.</p>
-      <div class="match-grid">
-        <div class="match-col" id="match2-left">
-          <div class="match-item" data-id="i" data-pair="1">I want a hug</div>
-          <div class="match-item" data-id="j" data-pair="2">I'm hugging you (tulić)</div>
-          <div class="match-item" data-id="k" data-pair="3">hug! (command)</div>
-          <div class="match-item" data-id="l" data-pair="4">very tightly</div>
-        </div>
-        <div class="match-col" id="match2-right">
-          <div class="match-item" data-id="m" data-pair="2">Tulę cię</div>
-          <div class="match-item" data-id="n" data-pair="4">bardzo mocno</div>
-          <div class="match-item" data-id="o" data-pair="1">Chcę przytulasa</div>
-          <div class="match-item" data-id="p" data-pair="3">Przytul mnie</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="13">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 13 — Build the sentence</span>
-        <span class="exercise-score" id="score13"></span>
-      </div>
-      <p>Build: <strong>"Hug me."</strong></p>
-      <div class="word-bank" id="bank13">
-        <span class="word-chip" draggable="true" data-word="Przytul" data-bank="13">Przytul</span>
-        <span class="word-chip" draggable="true" data-word="mnie." data-bank="13">mnie.</span>
-        <span class="word-chip" draggable="true" data-word="cię." data-bank="13">cię.</span>
-        <span class="word-chip" draggable="true" data-word="Chcę" data-bank="13">Chcę</span>
-      </div>
-      <p class="fill-sentence">
-        <span class="drop-zone" data-slot="0" data-ex="13" data-bank="13"></span>
-        <span class="drop-zone" data-slot="1" data-ex="13" data-bank="13"></span>
-      </p>
-      <button class="btn btn-check" onclick="checkBuilder(13, ['Przytul','mnie.'])">Check answer</button>
-      <button class="btn" onclick="resetBuilder(13)" style="margin-left:.5rem">Reset</button>
-    </div>
-
-    <div class="exercise" data-exercise="14">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 14 — Very tight</span>
-        <span class="exercise-score" id="score14"></span>
-      </div>
-      <p class="fill-sentence">Przytulam cię <input type="text" id="ex14-input" placeholder="..." style="min-width:130px">.</p>
-      <p class="muted">"I'm hugging you very tight." — two words</p>
-      <button class="btn btn-check" onclick="checkFill(14, 'bardzo mocno')">Check answer</button>
-    </div>
-
-    <div class="exercise" data-exercise="15">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 15 — Translation</span>
-        <span class="exercise-score" id="score15"></span>
-      </div>
-      <p>What does <strong>Przytulam cię bardzo mocno</strong> mean?</p>
-      <div class="btn-row" id="ex15-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 15)">I want a tight hug.</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 15)">I'm hugging you very tight.</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 15)">I'll hug you soon.</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="16">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 16 — What is cię?</span>
-        <span class="exercise-score" id="score16"></span>
-      </div>
-      <p>In <em>Przytulam cię</em>, what does <strong>cię</strong> mean?</p>
-      <div class="btn-row" id="ex16-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 16)">me</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 16)">you (object)</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 16)">a hug</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="17">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 17 — Match pronouns</span>
-        <span class="exercise-score" id="score17"></span>
-      </div>
-      <p class="muted">Click English, then Polish.</p>
-      <div class="match-grid">
-        <div class="match-col" id="match3-left">
-          <div class="match-item" data-id="q1" data-pair="1">me</div>
-          <div class="match-item" data-id="q2" data-pair="2">you (object)</div>
-          <div class="match-item" data-id="q3" data-pair="3">a hug (noun)</div>
-          <div class="match-item" data-id="q4" data-pair="4">I want</div>
-        </div>
-        <div class="match-col" id="match3-right">
-          <div class="match-item" data-id="q5" data-pair="2">cię</div>
-          <div class="match-item" data-id="q6" data-pair="4">chcę</div>
-          <div class="match-item" data-id="q7" data-pair="1">mnie</div>
-          <div class="match-item" data-id="q8" data-pair="3">przytulenie</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="18">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 18 — Spelling</span>
-        <span class="exercise-score" id="score18"></span>
-      </div>
-      <p>Which spelling of <strong>"I want"</strong> is correct?</p>
-      <div class="btn-row" id="ex18-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 18)">Chce</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 18)">Chcę</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 18)">Chca</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="19">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 19 — Build future</span>
-        <span class="exercise-score" id="score19"></span>
-      </div>
-      <p>Build: <strong>"I'll hug you."</strong></p>
-      <div class="word-bank" id="bank19">
-        <span class="word-chip" draggable="true" data-word="Przytulę" data-bank="19">Przytulę</span>
-        <span class="word-chip" draggable="true" data-word="cię." data-bank="19">cię.</span>
-        <span class="word-chip" draggable="true" data-word="Przytulam" data-bank="19">Przytulam</span>
-        <span class="word-chip" draggable="true" data-word="mnie." data-bank="19">mnie.</span>
-      </div>
-      <p class="fill-sentence">
-        <span class="drop-zone" data-slot="0" data-ex="19" data-bank="19"></span>
-        <span class="drop-zone" data-slot="1" data-ex="19" data-bank="19"></span>
-      </p>
-      <button class="btn btn-check" onclick="checkBuilder(19, ['Przytulę','cię.'])">Check answer</button>
-      <button class="btn" onclick="resetBuilder(19)" style="margin-left:.5rem">Reset</button>
-    </div>
-
-    <div class="exercise" data-exercise="20">
-      <div class="exercise-header">
-        <span class="exercise-num">Bonus — Flashcards</span>
-        <span class="exercise-score" id="score20"></span>
-      </div>
-      <div class="flashcard-deck">
-        <div class="flashcard" id="flashcard" onclick="flipCard()">
-          <div class="flashcard-inner">
-            <div class="flashcard-front">
-              <div class="flashcard-pl" id="fc-front">Chcę przytulasa</div>
-              <p class="muted" style="margin-top:.5rem;font-size:.8rem">Tap to flip</p>
-            </div>
-            <div class="flashcard-back">
-              <div class="flashcard-en" id="fc-en">I want a hug</div>
-              <div class="flashcard-ko" id="fc-ko">포옹하고 싶어</div>
-            </div>
-          </div>
-        </div>
-        <div class="flash-nav">
-          <button class="btn" onclick="prevCard()">← Prev</button>
-          <span class="flash-counter" id="fc-counter">1 / 8</span>
-          <button class="btn" onclick="nextCard()">Next →</button>
-          <button class="btn" onclick="markKnown()" style="border-color:var(--success);color:var(--success)">✓ Got it!</button>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- VOCABULARY -->
@@ -484,6 +243,10 @@
     </div>
   </section>
 
+  <div class="lesson-practice-cta lesson-practice-cta--bottom">
+    <a href="practice/pl-3.html" class="practice-btn">🕹️ Arcade</a>
+  </div>
+
 </div>
   </div>
   <div class="whiteboard-tray">
@@ -497,12 +260,8 @@
 <div class="toast" id="toast"></div>
 
 <script src="pl-hangul.js"></script>
-<script src="lesson-progress.js"></script>
+<script src="player-xp.js"></script>
 <script>
-
-  const TOTAL_EXERCISES = 20;
-  const LP = LessonProgress.create('pl-3', TOTAL_EXERCISES);
-  const completed = LP.completed;
 
   const vocabulary = [
     { pl: "przytulenie", en: "a hug (noun)", ko: "포옹" },
@@ -521,20 +280,18 @@
     { pl: "Przytulam cię bardzo mocno", en: "I'm hugging you very tight", ko: "너를 아주 꽉 안아주고 있어" },
     { pl: "bardzo mocno", en: "very tightly / very hard", ko: "아주 꽉 / 아주 세게" },
     { pl: "przytul", en: "hug! (imperative)", ko: "안아줘 (명령)" },
+    { pl: "skarbie", en: "darling / sweetie (vocative)", ko: "자기야 / 내 사랑" },
+    { pl: "kotku", en: "kitty (nickname, vocative)", ko: "고양이야 (애칭)" },
+    { pl: "misiu", en: "bear / teddy (nickname, vocative)", ko: "곰돌이 (애칭)" },
+    { pl: "Kocham cię bardziej niż niebo, ziemię i cały wszechświat razem wzięty!", en: "I love you more than sky, earth & universe combined!", ko: "하늘만큼 땅만큼 우주만큼 사랑해" },
+    { pl: "kocham cię", en: "I love you", ko: "사랑해" },
+    { pl: "człowiek", en: "a person / human (singular)", ko: "사람 (한 명)" },
+    { pl: "ludzie", en: "people (plural only)", ko: "사람들" },
+    { pl: "niebo", en: "sky / heaven", ko: "하늘" },
+    { pl: "ziemia", en: "earth / ground", ko: "땅" },
+    { pl: "wszechświat", en: "universe", ko: "우주" },
   ];
 
-  const flashcards = [
-    { pl: "przytulenie", en: "a hug", ko: "포옹" },
-    { pl: "Chcę przytulasa", en: "I want a hug", ko: "포옹하고 싶어" },
-    { pl: "Przytul mnie", en: "Hug me", ko: "안아줘" },
-    { pl: "Przytulam cię", en: "I'm hugging you", ko: "너를 안아주고 있어" },
-    { pl: "Tulę cię", en: "I'm cuddling you", ko: "너를 안고 있어" },
-    { pl: "Przytulę cię", en: "I'll hug you", ko: "안아줄게" },
-    { pl: "bardzo mocno", en: "very tightly", ko: "아주 꽉" },
-    { pl: "Przytulam cię bardzo mocno", en: "I'm hugging you very tight", ko: "아주 꽉 안아주고 있어" },
-  ];
-  let fcIndex = 0;
-  const fcKnown = new Set();
 
   // ─── Init vocab table ───
   function renderVocab(data) {
@@ -551,284 +308,6 @@
     ));
   }
 
-  // ─── Progress ───
-  let progressHideTimer;
-
-  function markComplete(num) {
-    if (!LP.track(num)) return;
-    flashProgress(num);
-  }
-
-  function flashProgress(exNum) {
-    const ex = document.querySelector(`.exercise[data-exercise="${exNum}"]`);
-    const wrap = document.getElementById('progressWrap');
-    if (!ex || !wrap) return;
-
-    ex.insertBefore(wrap, ex.firstChild);
-    wrap.hidden = false;
-
-    const pct = Math.round((completed.size / TOTAL_EXERCISES) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressText').textContent = pct + '%';
-
-    wrap.classList.remove('show');
-    void wrap.offsetWidth;
-    wrap.classList.add('show');
-
-    clearTimeout(progressHideTimer);
-    progressHideTimer = setTimeout(() => {
-      wrap.classList.remove('show');
-      wrap.hidden = true;
-    }, 2400);
-  }
-
-  // ─── Toast ───
-  function toast(msg, type = 'success') {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.className = 'toast show ' + type;
-    setTimeout(() => t.classList.remove('show'), 2500);
-  }
-
-  // ─── Reveal cards ───
-  function reveal(el) {
-    el.classList.toggle('revealed');
-  }
-
-  // ─── Gender picker exercises ───
-  function pickGender(btn, exNum) {
-    const row = btn.parentElement;
-    if (row.dataset.done) return;
-    const correct = btn.dataset.correct === 'true';
-    row.querySelectorAll('.btn').forEach(b => {
-      b.disabled = true;
-      if (b.dataset.correct === 'true') b.classList.add('correct');
-      else if (b === btn && !correct) b.classList.add('wrong');
-    });
-    const scoreEl = document.getElementById('score' + exNum);
-    if (correct) {
-      scoreEl.textContent = '✓ Correct!';
-      scoreEl.className = 'exercise-score correct';
-      toast('Świetnie! Great job!');
-      markComplete(exNum);
-    } else {
-      scoreEl.textContent = '✗ Try again next time';
-      scoreEl.className = 'exercise-score wrong';
-      toast('Not quite — check the green answer.', 'error');
-      markComplete(exNum);
-    }
-    row.dataset.done = '1';
-  }
-
-  // ─── Fill in blank ───
-  function checkFill(exNum, answer) {
-    const input = document.getElementById('ex' + exNum + '-input');
-    const val = input.value.trim().toLowerCase();
-    const ok = val === answer.toLowerCase();
-    input.classList.remove('correct', 'wrong');
-    input.classList.add(ok ? 'correct' : 'wrong');
-    const scoreEl = document.getElementById('score' + exNum);
-    scoreEl.textContent = ok ? '✓ Correct!' : `✗ Answer: ${answer}`;
-    scoreEl.className = 'exercise-score ' + (ok ? 'correct' : 'wrong');
-    toast(ok ? 'Brawo!' : `Correct answer: ${answer}`, ok ? 'success' : 'error');
-    markComplete(exNum);
-  }
-
-
-  // ─── Matching ───
-  let matchSelected = null;
-  let matchPairs = 0;
-
-  function setupMatch(leftId, rightId, exNum, total) {
-    const left = document.getElementById(leftId);
-    const right = document.getElementById(rightId);
-    let pairs = 0;
-
-    function handleClick(item) {
-      if (item.classList.contains('matched')) return;
-      if (!matchSelected) {
-        matchSelected = item;
-        item.classList.add('selected');
-      } else if (matchSelected === item) {
-        item.classList.remove('selected');
-        matchSelected = null;
-      } else {
-        const sameCol = matchSelected.parentElement === item.parentElement;
-        if (sameCol) {
-          matchSelected.classList.remove('selected');
-          matchSelected = item;
-          item.classList.add('selected');
-          return;
-        }
-        if (matchSelected.dataset.pair === item.dataset.pair) {
-          matchSelected.classList.remove('selected');
-          matchSelected.classList.add('matched');
-          item.classList.add('matched');
-          matchSelected = null;
-          pairs++;
-          if (pairs === total) {
-            document.getElementById('score' + exNum).textContent = '✓ All matched!';
-            document.getElementById('score' + exNum).className = 'exercise-score correct';
-            toast('Wszystko dobrze! All matched!');
-            markComplete(exNum);
-          }
-        } else {
-          item.classList.add('wrong-flash');
-          matchSelected.classList.add('wrong-flash');
-          setTimeout(() => {
-            item.classList.remove('wrong-flash');
-            matchSelected.classList.remove('wrong-flash', 'selected');
-            matchSelected = null;
-          }, 500);
-        }
-      }
-    }
-
-    left.querySelectorAll('.match-item').forEach(i => i.addEventListener('click', () => handleClick(i)));
-    right.querySelectorAll('.match-item').forEach(i => i.addEventListener('click', () => handleClick(i)));
-  }
-
-  setupMatch('match-left', 'match-right', 5, 4);
-  setupMatch('match2-left', 'match2-right', 12, 4);
-  setupMatch('match3-left', 'match3-right', 17, 4);
-
-  // ─── Sentence builder (drag & drop + tap) ───
-  let selectedChip = null;
-
-  function freeChip(word, bankId) {
-    if (!word) return;
-    document.querySelectorAll(`.word-chip[data-bank="${bankId}"]`).forEach(c => {
-      if (c.dataset.word === word) c.classList.remove('used');
-    });
-  }
-
-  function markChipUsed(word, bankId) {
-    document.querySelectorAll(`.word-chip[data-bank="${bankId}"]`).forEach(c => {
-      if (c.dataset.word === word) c.classList.add('used');
-    });
-  }
-
-  function placeWord(zone, word) {
-    const bankId = zone.dataset.bank;
-    if (zone.dataset.word) freeChip(zone.dataset.word, bankId);
-    zone.textContent = word;
-    zone.dataset.word = word;
-    zone.classList.add('filled');
-    markChipUsed(word, bankId);
-  }
-
-  function clearSelection() {
-    if (selectedChip) selectedChip.classList.remove('chip-selected');
-    selectedChip = null;
-    document.querySelectorAll('.drop-zone.click-ready').forEach(z => z.classList.remove('click-ready'));
-  }
-
-  document.querySelectorAll('.word-chip[data-bank]').forEach(chip => {
-    chip.addEventListener('dragstart', e => {
-      e.dataTransfer.setData('text/plain', chip.dataset.word);
-      e.dataTransfer.effectAllowed = 'move';
-    });
-
-    chip.addEventListener('click', () => {
-      if (chip.classList.contains('used')) return;
-      if (selectedChip === chip) {
-        clearSelection();
-        return;
-      }
-      clearSelection();
-      selectedChip = chip;
-      chip.classList.add('chip-selected');
-      const bankId = chip.dataset.bank;
-      document.querySelectorAll(`.drop-zone[data-bank="${bankId}"]`).forEach(z => z.classList.add('click-ready'));
-    });
-  });
-
-  document.querySelectorAll('.drop-zone[data-bank]').forEach(zone => {
-    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
-    zone.addEventListener('dragleave', () => zone.classList.remove('over'));
-    zone.addEventListener('drop', e => {
-      e.preventDefault();
-      zone.classList.remove('over');
-      const word = e.dataTransfer.getData('text/plain') || e.dataTransfer.getData('text');
-      if (word) {
-        placeWord(zone, word);
-        clearSelection();
-      }
-    });
-
-    zone.addEventListener('click', () => {
-      if (selectedChip && !selectedChip.classList.contains('used')) {
-        placeWord(zone, selectedChip.dataset.word);
-        clearSelection();
-        return;
-      }
-      if (zone.dataset.word) {
-        freeChip(zone.dataset.word, zone.dataset.bank);
-        zone.textContent = '';
-        delete zone.dataset.word;
-        zone.classList.remove('filled');
-      }
-    });
-  });
-
-  function resetBuilder(exNum) {
-    document.querySelectorAll(`.drop-zone[data-ex="${exNum}"]`).forEach(zone => {
-      if (zone.dataset.word) freeChip(zone.dataset.word, zone.dataset.bank);
-      zone.textContent = '';
-      delete zone.dataset.word;
-      zone.classList.remove('filled');
-    });
-    clearSelection();
-    document.getElementById('score' + exNum).textContent = '';
-  }
-
-  function checkBuilder(exNum, expected) {
-    const zones = document.querySelectorAll(`.drop-zone[data-ex="${exNum}"]`);
-    const answer = Array.from(zones).map(z => (z.dataset.word || '').trim());
-    const ok = answer.length === expected.length && answer.every((w, i) => w === expected[i]);
-    const scoreEl = document.getElementById('score' + exNum);
-    scoreEl.textContent = ok ? '✓ Correct!' : `✗ Answer: ${expected.join(' ')}`;
-    scoreEl.className = 'exercise-score ' + (ok ? 'correct' : 'wrong');
-    toast(ok ? 'Idealnie!' : `Correct: ${expected.join(' ')}`, ok ? 'success' : 'error');
-    if (ok) markComplete(exNum);
-  }
-
-  // ─── Flashcards ───
-  function updateCard() {
-    const card = flashcards[fcIndex];
-    document.getElementById('fc-front').innerHTML = plCell(card.pl);
-    document.getElementById('fc-en').textContent = card.en;
-    document.getElementById('fc-ko').textContent = card.ko;
-    document.getElementById('fc-counter').textContent = `${fcIndex + 1} / ${flashcards.length}`;
-    document.getElementById('flashcard').classList.remove('flipped');
-  }
-
-  function flipCard() {
-    document.getElementById('flashcard').classList.toggle('flipped');
-  }
-
-  function nextCard() {
-    fcIndex = (fcIndex + 1) % flashcards.length;
-    updateCard();
-  }
-
-  function prevCard() {
-    fcIndex = (fcIndex - 1 + flashcards.length) % flashcards.length;
-    updateCard();
-  }
-
-  function markKnown() {
-    fcKnown.add(fcIndex);
-    toast(`Card marked! (${fcKnown.size}/${flashcards.length} known)`);
-    if (fcKnown.size === flashcards.length) {
-      document.getElementById('score20').textContent = '✓ All cards reviewed!';
-      document.getElementById('score20').className = 'exercise-score correct';
-      markComplete(20);
-    }
-    nextCard();
-  }
-
-  updateCard();
   annotatePolishPage();
 
   // ─── Dropdown pickers ───
@@ -863,7 +342,6 @@
     }
   });
 
-  document.addEventListener('DOMContentLoaded', () => LP.restore());
 </script>
   <script src="font-size.js"></script>
 </body>
