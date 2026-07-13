@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Kalam:wght@300;400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../whiteboard.css">
+  <link rel="stylesheet" href="../player-xp.css">
+  <link rel="stylesheet" href="../practice.css">
   <link rel="stylesheet" href="../korean.css">
 </head>
 <body>
@@ -23,33 +25,16 @@
     <div class="home-link-wrap"><a href="../home.html" class="home-link">🏠 Home</a></div>
     <h1>Hugs &amp; <span class="ko">안고 있어</span></h1>
     <p class="subtitle">Say you're hugging someone · <span class="ko">안아줄게</span> · <span class="ko">포옹</span></p>
-    <p class="board-date">Topic: Hugging · from chat with Yoon · <a href="transcribe.html" style="color:var(--marker-purple)">Polish ↔ Korean translator</a> · <a href="../lesson-3.html" style="color:var(--marker-blue)">Polish L3 — hugs</a></p>
+    <p class="board-date">Topic: Hugging · from chat with Yoon</p>
   </header>
 
-  <div class="progress-wrap" id="progressWrap" aria-live="polite" hidden>
-    <div class="progress-label">
-      <span id="progressText">0%</span>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="lesson-practice-cta lesson-practice-cta--top">
+    <a href="practice/ko-3.html" class="practice-btn">🕹️ Arcade</a>
   </div>
 
   <section id="summary">
     <div class="section-head">
       <h2><span class="icon">📋</span> Lesson Summary</h2>
-      <div class="summary-picker board-picker" id="summaryPicker">
-        <button type="button" class="summary-picker-btn" aria-expanded="false" aria-haspopup="listbox">
-          Basic
-          <span class="summary-picker-chevron" aria-hidden="true">▾</span>
-        </button>
-        <ul class="summary-picker-menu" role="listbox">
-          <li class="picker-current" role="option" aria-selected="true">
-            <span class="picker-current">Basic — quick overview</span>
-          </li>
-          <li role="option">
-            <a href="lesson-3-theory.html">Full explanation →</a>
-          </li>
-        </ul>
-      </div>
     </div>
     <div class="summary-grid">
       <div class="summary-item">
@@ -130,316 +115,7 @@
         <div class="example-hint">bardzo mocno / mocno</div>
       </div>
     </div>
-    <p class="tap-hint">👆 From class with Yoon · pairs with <a href="../lesson-3.html">Polish L3</a></p>
-  </section>
-
-  <section id="exercises">
-    <h2><span class="icon">✏️</span> Interactive Exercises</h2>
-    <p class="muted">Complete the exercises below.</p>
-
-    <div class="exercise" data-exercise="1">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 1 — Hug (noun)</span>
-        <span class="exercise-score" id="score1"></span>
-      </div>
-      <p>What is <strong>"a hug"</strong> (noun) in Korean?</p>
-      <div class="btn-row" id="ex1-options">
-        <button class="btn ko" data-correct="false" onclick="pickGender(this, 1)">안다</button>
-        <button class="btn ko" data-correct="true" onclick="pickGender(this, 1)">포옹</button>
-        <button class="btn ko" data-correct="false" onclick="pickGender(this, 1)">안고 있어</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="2">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 2 — Hug (verb)</span>
-        <span class="exercise-score" id="score2"></span>
-      </div>
-      <p>What is <strong>"to hug"</strong> (verb dictionary form)?</p>
-      <div class="btn-row" id="ex2-options">
-        <button class="btn ko" data-correct="true" onclick="pickGender(this, 2)">안다</button>
-        <button class="btn ko" data-correct="false" onclick="pickGender(this, 2)">포옹</button>
-        <button class="btn ko" data-correct="false" onclick="pickGender(this, 2)">안아줄게</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="3">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 3 — I'm hugging</span>
-        <span class="exercise-score" id="score3"></span>
-      </div>
-      <p>How do you say <strong>"I'm hugging"</strong> (right now)?</p>
-      <div class="btn-row" id="ex3-options">
-        <button class="btn ko" data-correct="false" onclick="pickGender(this, 3)">안아줄게</button>
-        <button class="btn ko" data-correct="true" onclick="pickGender(this, 3)">안고 있어</button>
-        <button class="btn ko" data-correct="false" onclick="pickGender(this, 3)">포옹</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="4">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 4 — I'll hug you</span>
-        <span class="exercise-score" id="score4"></span>
-      </div>
-      <p>How do you say <strong>"I'll hug you"</strong>?</p>
-      <div class="btn-row" id="ex4-options">
-        <button class="btn ko" data-correct="true" onclick="pickGender(this, 4)">안아줄게</button>
-        <button class="btn ko" data-correct="false" onclick="pickGender(this, 4)">안고 있어</button>
-        <button class="btn ko" data-correct="false" onclick="pickGender(this, 4)">안다</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="5">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 5 — Match the phrases</span>
-        <span class="exercise-score" id="score5"></span>
-      </div>
-      <p class="muted">Click English, then Korean.</p>
-      <div class="match-grid">
-        <div class="match-col" id="match-left">
-          <div class="match-item" data-id="a" data-pair="1">a hug (noun)</div>
-          <div class="match-item" data-id="b" data-pair="2">I'm hugging</div>
-          <div class="match-item" data-id="c" data-pair="3">I'll hug you</div>
-          <div class="match-item" data-id="d" data-pair="4">I'm hugging you tight</div>
-        </div>
-        <div class="match-col" id="match-right">
-          <div class="match-item ko" data-id="e" data-pair="2">안고 있어</div>
-          <div class="match-item ko" data-id="f" data-pair="1">포옹</div>
-          <div class="match-item ko" data-id="g" data-pair="4">나는 널 꽉 안고 있어</div>
-          <div class="match-item ko" data-id="h" data-pair="3">안아줄게</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="6">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 6 — Fill in 안고 있어</span>
-        <span class="exercise-score" id="score6"></span>
-      </div>
-      <p class="fill-sentence ko"><input type="text" id="ex6-input" placeholder="..." style="min-width:120px"></p>
-      <p class="muted">"I'm hugging." — ongoing form</p>
-      <button class="btn btn-check" onclick="checkFill(6, '안고 있어')">Check answer</button>
-    </div>
-
-    <div class="exercise" data-exercise="7">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 7 — Full sentence</span>
-        <span class="exercise-score" id="score7"></span>
-      </div>
-      <p>What does <strong class="ko">나는 널 꽉 안고 있어</strong> mean?</p>
-      <div class="btn-row" id="ex7-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 7)">I'll hug you soon.</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 7)">I'm hugging you tight.</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 7)">I want a hug.</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="8">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 8 — What is 꽉?</span>
-        <span class="exercise-score" id="score8"></span>
-      </div>
-      <p>What does <strong class="ko">꽉</strong> mean in <em class="ko">나는 널 꽉 안고 있어</em>?</p>
-      <div class="btn-row" id="ex8-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 8)">you</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 8)">tightly</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 8)">a hug</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="9">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 9 — Fill in 꽉</span>
-        <span class="exercise-score" id="score9"></span>
-      </div>
-      <p class="fill-sentence ko">나는 널 <input type="text" id="ex9-input" placeholder="..." style="min-width:60px"> 안고 있어</p>
-      <p class="muted">"I'm hugging you <strong>tight</strong>."</p>
-      <button class="btn btn-check" onclick="checkFill(9, '꽉')">Check answer</button>
-    </div>
-
-    <div class="exercise" data-exercise="10">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 10 — What is 널?</span>
-        <span class="exercise-score" id="score10"></span>
-      </div>
-      <p>In <em class="ko">나는 널 꽉 안고 있어</em>, what does <strong class="ko">널</strong> mean?</p>
-      <div class="btn-row" id="ex10-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 10)">I</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 10)">you (object)</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 10)">tightly</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="11">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 11 — Match words</span>
-        <span class="exercise-score" id="score11"></span>
-      </div>
-      <p class="muted">Click English, then Korean.</p>
-      <div class="match-grid">
-        <div class="match-col" id="match2-left">
-          <div class="match-item" data-id="i" data-pair="1">to hug</div>
-          <div class="match-item" data-id="j" data-pair="2">tightly</div>
-          <div class="match-item" data-id="k" data-pair="3">you (object)</div>
-          <div class="match-item" data-id="l" data-pair="4">I</div>
-        </div>
-        <div class="match-col" id="match2-right">
-          <div class="match-item ko" data-id="m" data-pair="2">꽉</div>
-          <div class="match-item ko" data-id="n" data-pair="4">나</div>
-          <div class="match-item ko" data-id="o" data-pair="1">안다</div>
-          <div class="match-item ko" data-id="p" data-pair="3">널</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="12">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 12 — Noun or verb?</span>
-        <span class="exercise-score" id="score12"></span>
-      </div>
-      <p><strong class="ko">포옹</strong> is…</p>
-      <div class="btn-row" id="ex12-options">
-        <button class="btn" data-correct="true" onclick="pickGender(this, 12)">a noun (a hug)</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 12)">a verb (to hug)</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 12)">I'm hugging</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="13">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 13 — Build the sentence</span>
-        <span class="exercise-score" id="score13"></span>
-      </div>
-      <p>Build: <strong>"I'll hug you."</strong></p>
-      <div class="word-bank" id="bank13">
-        <span class="word-chip ko" draggable="true" data-word="안아줄게" data-bank="13">안아줄게</span>
-        <span class="word-chip ko" draggable="true" data-word="안고 있어" data-bank="13">안고 있어</span>
-        <span class="word-chip ko" draggable="true" data-word="포옹" data-bank="13">포옹</span>
-      </div>
-      <p class="fill-sentence">
-        <span class="drop-zone" data-slot="0" data-ex="13" data-bank="13"></span>
-      </p>
-      <button class="btn btn-check" onclick="checkBuilder(13, ['안아줄게'])">Check answer</button>
-      <button class="btn" onclick="resetBuilder(13)" style="margin-left:.5rem">Reset</button>
-    </div>
-
-    <div class="exercise" data-exercise="14">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 14 — -고 있어</span>
-        <span class="exercise-score" id="score14"></span>
-      </div>
-      <p>What does <strong class="ko">-고 있어</strong> add to a verb?</p>
-      <div class="btn-row" id="ex14-options">
-        <button class="btn" data-correct="false" onclick="pickGender(this, 14)">future — will do</button>
-        <button class="btn" data-correct="true" onclick="pickGender(this, 14)">ongoing — am …ing</button>
-        <button class="btn" data-correct="false" onclick="pickGender(this, 14)">a noun</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="15">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 15 — Polish match</span>
-        <span class="exercise-score" id="score15"></span>
-      </div>
-      <p class="muted">Click Korean, then Polish (from Polish L3).</p>
-      <div class="match-grid">
-        <div class="match-col" id="match3-left">
-          <div class="match-item ko" data-id="q1" data-pair="1">안아줄게</div>
-          <div class="match-item ko" data-id="q2" data-pair="2">안고 있어</div>
-          <div class="match-item ko" data-id="q3" data-pair="3">나는 널 꽉 안고 있어</div>
-          <div class="match-item ko" data-id="q4" data-pair="4">포옹</div>
-        </div>
-        <div class="match-col" id="match3-right">
-          <div class="match-item" data-id="q5" data-pair="2">Przytulam cię</div>
-          <div class="match-item" data-id="q6" data-pair="4">przytulenie</div>
-          <div class="match-item" data-id="q7" data-pair="1">Przytulę cię</div>
-          <div class="match-item" data-id="q8" data-pair="3">Przytulam cię bardzo mocno</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="16">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 16 — Fill in 안아줄게</span>
-        <span class="exercise-score" id="score16"></span>
-      </div>
-      <p class="fill-sentence ko"><input type="text" id="ex16-input" placeholder="..." style="min-width:120px"></p>
-      <p class="muted">"I'll hug you."</p>
-      <button class="btn btn-check" onclick="checkFill(16, '안아줄게')">Check answer</button>
-    </div>
-
-    <div class="exercise" data-exercise="17">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 17 — Build the big sentence</span>
-        <span class="exercise-score" id="score17"></span>
-      </div>
-      <p>Build: <strong>"I'm hugging you tight."</strong></p>
-      <div class="word-bank" id="bank17">
-        <span class="word-chip ko" draggable="true" data-word="나는" data-bank="17">나는</span>
-        <span class="word-chip ko" draggable="true" data-word="널" data-bank="17">널</span>
-        <span class="word-chip ko" draggable="true" data-word="꽉" data-bank="17">꽉</span>
-        <span class="word-chip ko" draggable="true" data-word="안고 있어" data-bank="17">안고 있어</span>
-        <span class="word-chip ko" draggable="true" data-word="안아줄게" data-bank="17">안아줄게</span>
-      </div>
-      <p class="fill-sentence">
-        <span class="drop-zone" data-slot="0" data-ex="17" data-bank="17"></span>
-        <span class="drop-zone" data-slot="1" data-ex="17" data-bank="17"></span>
-        <span class="drop-zone" data-slot="2" data-ex="17" data-bank="17"></span>
-        <span class="drop-zone" data-slot="3" data-ex="17" data-bank="17"></span>
-      </p>
-      <button class="btn btn-check" onclick="checkBuilder(17, ['나는','널','꽉','안고 있어'])">Check answer</button>
-      <button class="btn" onclick="resetBuilder(17)" style="margin-left:.5rem">Reset</button>
-    </div>
-
-    <div class="exercise" data-exercise="18">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 18 — Pick the verb form</span>
-        <span class="exercise-score" id="score18"></span>
-      </div>
-      <p>Which form means <strong>"I'm hugging"</strong> (not future)?</p>
-      <div class="btn-row" id="ex18-options">
-        <button class="btn ko" data-correct="false" onclick="pickGender(this, 18)">안아줄게</button>
-        <button class="btn ko" data-correct="true" onclick="pickGender(this, 18)">안고 있어</button>
-        <button class="btn ko" data-correct="false" onclick="pickGender(this, 18)">안다</button>
-      </div>
-    </div>
-
-    <div class="exercise" data-exercise="19">
-      <div class="exercise-header">
-        <span class="exercise-num">Exercise 19 — Fill in 포옹</span>
-        <span class="exercise-score" id="score19"></span>
-      </div>
-      <p class="fill-sentence ko"><input type="text" id="ex19-input" placeholder="..." style="min-width:80px"></p>
-      <p class="muted">"a hug" (noun)</p>
-      <button class="btn btn-check" onclick="checkFill(19, '포옹')">Check answer</button>
-    </div>
-
-    <div class="exercise" data-exercise="20">
-      <div class="exercise-header">
-        <span class="exercise-num">Bonus — Flashcards</span>
-        <span class="exercise-score" id="score20"></span>
-      </div>
-      <div class="flashcard-deck">
-        <div class="flashcard" id="flashcard" onclick="flipCard()">
-          <div class="flashcard-inner">
-            <div class="flashcard-front">
-              <div class="flashcard-pl ko" id="fc-front">나는 널 꽉 안고 있어</div>
-              <p class="muted" style="margin-top:.5rem;font-size:.8rem">Tap to flip</p>
-            </div>
-            <div class="flashcard-back">
-              <div class="flashcard-en" id="fc-en">I'm hugging you tight</div>
-              <div class="flashcard-ko" id="fc-ko" style="font-family:'Patrick Hand',cursive">Przytulam cię bardzo mocno</div>
-            </div>
-          </div>
-        </div>
-        <div class="flash-nav">
-          <button class="btn" onclick="prevCard()">← Prev</button>
-          <span class="flash-counter" id="fc-counter">1 / 8</span>
-          <button class="btn" onclick="nextCard()">Next →</button>
-          <button class="btn" onclick="markKnown()" style="border-color:var(--success);color:var(--success)">✓ Got it!</button>
-        </div>
-      </div>
-    </div>
+    <p class="tap-hint">👆 From class with Yoon</p>
   </section>
 
   <section id="vocabulary">
@@ -460,6 +136,10 @@
     </div>
   </section>
 
+  <div class="lesson-practice-cta lesson-practice-cta--bottom">
+    <a href="practice/ko-3.html" class="practice-btn">🕹️ Arcade</a>
+  </div>
+
 </div>
   </div>
   <div class="whiteboard-tray">
@@ -473,12 +153,8 @@
 <div class="toast" id="toast"></div>
 
 <script src="ko-roman.js"></script>
-<script src="../lesson-progress.js"></script>
+<script src="../player-xp.js"></script>
 <script>
-
-  const TOTAL_EXERCISES = 20;
-  const LP = LessonProgress.create('ko-3', TOTAL_EXERCISES);
-  const completed = LP.completed;
 
   const vocabulary = [
     { ko: "포옹", en: "a hug (noun)", pl: "przytulenie" },
@@ -494,18 +170,6 @@
     { ko: "안아주다", en: "to hug someone (for them)", pl: "przytulać (kogoś)" },
   ];
 
-  const flashcards = [
-    { ko: "포옹", en: "a hug", pl: "przytulenie" },
-    { ko: "안다", en: "to hug", pl: "przytulać" },
-    { ko: "안고 있어", en: "I'm hugging", pl: "przytulam cię" },
-    { ko: "안아줄게", en: "I'll hug you", pl: "przytulę cię" },
-    { ko: "나는 널 꽉 안고 있어", en: "I'm hugging you tight", pl: "przytulam cię bardzo mocno" },
-    { ko: "꽉", en: "tightly", pl: "mocno" },
-    { ko: "널", en: "you (object)", pl: "cię" },
-    { ko: "-고 있어", en: "am …ing", pl: "właśnie …" },
-  ];
-  let fcIndex = 0;
-  const fcKnown = new Set();
 
   // ─── Init vocab table ───
   function renderVocab(data) {
@@ -522,286 +186,7 @@
     ));
   }
 
-  // ─── Progress ───
-  let progressHideTimer;
 
-  function markComplete(num) {
-    if (!LP.track(num)) return;
-    flashProgress(num);
-  }
-
-  function flashProgress(exNum) {
-    const ex = document.querySelector(`.exercise[data-exercise="${exNum}"]`);
-    const wrap = document.getElementById('progressWrap');
-    if (!ex || !wrap) return;
-
-    ex.insertBefore(wrap, ex.firstChild);
-    wrap.hidden = false;
-
-    const pct = Math.round((completed.size / TOTAL_EXERCISES) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressText').textContent = pct + '%';
-
-    wrap.classList.remove('show');
-    void wrap.offsetWidth;
-    wrap.classList.add('show');
-
-    clearTimeout(progressHideTimer);
-    progressHideTimer = setTimeout(() => {
-      wrap.classList.remove('show');
-      wrap.hidden = true;
-    }, 2400);
-  }
-
-  // ─── Toast ───
-  function toast(msg, type = 'success') {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.className = 'toast show ' + type;
-    setTimeout(() => t.classList.remove('show'), 2500);
-  }
-
-  // ─── Reveal cards ───
-  function reveal(el) {
-    el.classList.toggle('revealed');
-  }
-
-  // ─── Gender picker exercises ───
-  function pickGender(btn, exNum) {
-    const row = btn.parentElement;
-    if (row.dataset.done) return;
-    const correct = btn.dataset.correct === 'true';
-    row.querySelectorAll('.btn').forEach(b => {
-      b.disabled = true;
-      if (b.dataset.correct === 'true') b.classList.add('correct');
-      else if (b === btn && !correct) b.classList.add('wrong');
-    });
-    const scoreEl = document.getElementById('score' + exNum);
-    if (correct) {
-      scoreEl.textContent = '✓ Correct!';
-      scoreEl.className = 'exercise-score correct';
-      toast('잘했어요! Great job!');
-      markComplete(exNum);
-    } else {
-      scoreEl.textContent = '✗ Try again next time';
-      scoreEl.className = 'exercise-score wrong';
-      toast('Not quite — check the green answer.', 'error');
-      markComplete(exNum);
-    }
-    row.dataset.done = '1';
-  }
-
-  // ─── Fill in blank ───
-  function checkFill(exNum, answer) {
-    const input = document.getElementById('ex' + exNum + '-input');
-    const val = input.value.trim();
-    const ok = val === answer;
-    input.classList.remove('correct', 'wrong');
-    input.classList.add(ok ? 'correct' : 'wrong');
-    const scoreEl = document.getElementById('score' + exNum);
-    scoreEl.textContent = ok ? '✓ Correct!' : `✗ Answer: ${answer}`;
-    scoreEl.className = 'exercise-score ' + (ok ? 'correct' : 'wrong');
-    toast(ok ? '잘했어요!' : `Correct answer: ${answer}`, ok ? 'success' : 'error');
-    if (ok) markComplete(exNum);
-  }
-
-
-  // ─── Matching ───
-  let matchSelected = null;
-  let matchPairs = 0;
-
-  function setupMatch(leftId, rightId, exNum, total) {
-    const left = document.getElementById(leftId);
-    const right = document.getElementById(rightId);
-    let pairs = 0;
-
-    function handleClick(item) {
-      if (item.classList.contains('matched')) return;
-      if (!matchSelected) {
-        matchSelected = item;
-        item.classList.add('selected');
-      } else if (matchSelected === item) {
-        item.classList.remove('selected');
-        matchSelected = null;
-      } else {
-        const sameCol = matchSelected.parentElement === item.parentElement;
-        if (sameCol) {
-          matchSelected.classList.remove('selected');
-          matchSelected = item;
-          item.classList.add('selected');
-          return;
-        }
-        if (matchSelected.dataset.pair === item.dataset.pair) {
-          matchSelected.classList.remove('selected');
-          matchSelected.classList.add('matched');
-          item.classList.add('matched');
-          matchSelected = null;
-          pairs++;
-          if (pairs === total) {
-            document.getElementById('score' + exNum).textContent = '✓ All matched!';
-            document.getElementById('score' + exNum).className = 'exercise-score correct';
-            toast('다 맞아요! All matched!');
-            markComplete(exNum);
-          }
-        } else {
-          item.classList.add('wrong-flash');
-          matchSelected.classList.add('wrong-flash');
-          setTimeout(() => {
-            item.classList.remove('wrong-flash');
-            matchSelected.classList.remove('wrong-flash', 'selected');
-            matchSelected = null;
-          }, 500);
-        }
-      }
-    }
-
-    left.querySelectorAll('.match-item').forEach(i => i.addEventListener('click', () => handleClick(i)));
-    right.querySelectorAll('.match-item').forEach(i => i.addEventListener('click', () => handleClick(i)));
-  }
-
-  setupMatch('match-left', 'match-right', 5, 4);
-  setupMatch('match2-left', 'match2-right', 11, 4);
-  setupMatch('match3-left', 'match3-right', 15, 4);
-
-  // ─── Sentence builder (drag & drop + tap) ───
-  let selectedChip = null;
-
-  function freeChip(word, bankId) {
-    if (!word) return;
-    document.querySelectorAll(`.word-chip[data-bank="${bankId}"]`).forEach(c => {
-      if (c.dataset.word === word) c.classList.remove('used');
-    });
-  }
-
-  function markChipUsed(word, bankId) {
-    document.querySelectorAll(`.word-chip[data-bank="${bankId}"]`).forEach(c => {
-      if (c.dataset.word === word) c.classList.add('used');
-    });
-  }
-
-  function placeWord(zone, word) {
-    const bankId = zone.dataset.bank;
-    if (zone.dataset.word) freeChip(zone.dataset.word, bankId);
-    zone.textContent = word;
-    zone.dataset.word = word;
-    zone.classList.add('filled');
-    markChipUsed(word, bankId);
-  }
-
-  function clearSelection() {
-    if (selectedChip) selectedChip.classList.remove('chip-selected');
-    selectedChip = null;
-    document.querySelectorAll('.drop-zone.click-ready').forEach(z => z.classList.remove('click-ready'));
-  }
-
-  document.querySelectorAll('.word-chip[data-bank]').forEach(chip => {
-    chip.addEventListener('dragstart', e => {
-      e.dataTransfer.setData('text/plain', chip.dataset.word);
-      e.dataTransfer.effectAllowed = 'move';
-    });
-
-    chip.addEventListener('click', () => {
-      if (chip.classList.contains('used')) return;
-      if (selectedChip === chip) {
-        clearSelection();
-        return;
-      }
-      clearSelection();
-      selectedChip = chip;
-      chip.classList.add('chip-selected');
-      const bankId = chip.dataset.bank;
-      document.querySelectorAll(`.drop-zone[data-bank="${bankId}"]`).forEach(z => z.classList.add('click-ready'));
-    });
-  });
-
-  document.querySelectorAll('.drop-zone[data-bank]').forEach(zone => {
-    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
-    zone.addEventListener('dragleave', () => zone.classList.remove('over'));
-    zone.addEventListener('drop', e => {
-      e.preventDefault();
-      zone.classList.remove('over');
-      const word = e.dataTransfer.getData('text/plain') || e.dataTransfer.getData('text');
-      if (word) {
-        placeWord(zone, word);
-        clearSelection();
-      }
-    });
-
-    zone.addEventListener('click', () => {
-      if (selectedChip && !selectedChip.classList.contains('used')) {
-        placeWord(zone, selectedChip.dataset.word);
-        clearSelection();
-        return;
-      }
-      if (zone.dataset.word) {
-        freeChip(zone.dataset.word, zone.dataset.bank);
-        zone.textContent = '';
-        delete zone.dataset.word;
-        zone.classList.remove('filled');
-      }
-    });
-  });
-
-  function resetBuilder(exNum) {
-    document.querySelectorAll(`.drop-zone[data-ex="${exNum}"]`).forEach(zone => {
-      if (zone.dataset.word) freeChip(zone.dataset.word, zone.dataset.bank);
-      zone.textContent = '';
-      delete zone.dataset.word;
-      zone.classList.remove('filled');
-    });
-    clearSelection();
-    document.getElementById('score' + exNum).textContent = '';
-  }
-
-  function checkBuilder(exNum, expected) {
-    const zones = document.querySelectorAll(`.drop-zone[data-ex="${exNum}"]`);
-    const answer = Array.from(zones).map(z => (z.dataset.word || '').trim());
-    const ok = answer.length === expected.length && answer.every((w, i) => w === expected[i]);
-    const scoreEl = document.getElementById('score' + exNum);
-    scoreEl.textContent = ok ? '✓ Correct!' : `✗ Answer: ${expected.join(' ')}`;
-    scoreEl.className = 'exercise-score ' + (ok ? 'correct' : 'wrong');
-    toast(ok ? '완벽해!' : `Correct: ${expected.join(' ')}`, ok ? 'success' : 'error');
-    if (ok) markComplete(exNum);
-  }
-
-  // ─── Flashcards ───
-  function updateCard() {
-    const card = flashcards[fcIndex];
-    const front = document.getElementById('fc-front');
-    front.innerHTML = koCell(card.ko);
-    front.dataset.koRomanDone = '1';
-    document.getElementById('fc-en').textContent = card.en;
-    document.getElementById('fc-pl').textContent = card.pl;
-    document.getElementById('fc-counter').textContent = `${fcIndex + 1} / ${flashcards.length}`;
-    document.getElementById('flashcard').classList.remove('flipped');
-  }
-
-  function flipCard() {
-    document.getElementById('flashcard').classList.toggle('flipped');
-  }
-
-  function nextCard() {
-    fcIndex = (fcIndex + 1) % flashcards.length;
-    updateCard();
-  }
-
-  function prevCard() {
-    fcIndex = (fcIndex - 1 + flashcards.length) % flashcards.length;
-    updateCard();
-  }
-
-  function markKnown() {
-    fcKnown.add(fcIndex);
-    toast(`Card marked! (${fcKnown.size}/${flashcards.length} known)`);
-    if (fcKnown.size === flashcards.length) {
-      document.getElementById('score20').textContent = '✓ All cards reviewed!';
-      document.getElementById('score20').className = 'exercise-score correct';
-      markComplete(20);
-    }
-    nextCard();
-  }
-
-  updateCard();
   annotateKoreanPage();
 
   // ─── Dropdown pickers ───
@@ -836,7 +221,6 @@
     }
   });
 
-  document.addEventListener('DOMContentLoaded', () => LP.restore());
 </script>
   <script src="../font-size.js"></script>
 </body>
