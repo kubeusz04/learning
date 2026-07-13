@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice — Lesson 1 · Compliments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Kalam:wght@300;400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../whiteboard.css">
+  <link rel="stylesheet" href="../duolingo.css">
+  <link rel="stylesheet" href="../player-xp.css">
+  <link rel="stylesheet" href="../practice.css">
+  <link rel="stylesheet" href="../word-rain.css">
+  <link rel="stylesheet" href="../whack-a-word.css">
+  <link rel="stylesheet" href="../sentence-sprint.css">
+  <link rel="stylesheet" href="../word-tower.css">
+  <link rel="stylesheet" href="../boss-battle.css">
+  <link rel="stylesheet" href="../swipe-flashcards.css">
+  <link rel="stylesheet" href="../odd-one-out.css">
+</head>
+<body class="arcade-body">
+
+<div class="arcade-room">
+  <div class="arcade-room-bg" aria-hidden="true"></div>
+  <div class="arcade-room-glow arcade-room-glow--left" aria-hidden="true"></div>
+  <div class="arcade-room-glow arcade-room-glow--right" aria-hidden="true"></div>
+  <div class="arcade-floating arcade-floating--1" aria-hidden="true">👾</div>
+  <div class="arcade-floating arcade-floating--2" aria-hidden="true">🕹️</div>
+  <div class="arcade-floating arcade-floating--3" aria-hidden="true">⭐</div>
+
+  <div class="arcade-machine">
+<div class="container practice-page arcade-page">
+
+  <header class="arcade-machine-top arcade-header practice-header">
+    <div class="practice-header-links">
+      <a href="../home.html" class="home-link">🏠 Home</a>
+      <a href="../index.html" class="home-link">← Lesson</a>
+    </div>
+    <div class="arcade-header-brand">
+      <p class="practice-lesson-tag">🇵🇱 Polish · Lesson 1</p>
+      <h1 class="arcade-title">Practice Arcade</h1>
+      <p class="subtitle">Compliments &amp; Basic Sentences</p>
+    </div>
+  </header>
+
+  <section class="arcade-cabinet practice-hub" aria-label="Practice arcade">
+    <div class="arcade-select">
+      <p class="arcade-select-label">Featured</p>
+      <nav class="arcade-row arcade-row--featured" aria-label="Featured modes">
+        <button type="button" class="arcade-game practice-mode arcade-game--mix" data-mode="mix">
+          <span class="arcade-game-icon" aria-hidden="true">🎲</span>
+          <span class="arcade-game-name">Random Mix</span>
+          <span class="arcade-game-tag">Shuffle</span>
+        </button>
+      </nav>
+
+      <p class="arcade-select-label">Cabinet</p>
+      <nav class="arcade-grid practice-modes" aria-label="Mini-games">
+        <button type="button" class="arcade-game practice-mode active" data-mode="duo" aria-current="true">
+          <span class="arcade-game-icon" aria-hidden="true">🎮</span>
+          <span class="arcade-game-name">Duolingo</span>
+          <span class="arcade-game-tag">Standard</span>
+        </button>
+        <button type="button" class="arcade-game practice-mode" data-mode="rain">
+          <span class="arcade-game-icon" aria-hidden="true">☔</span>
+          <span class="arcade-game-name">Word Rain</span>
+        </button>
+        <button type="button" class="arcade-game practice-mode" data-mode="whack">
+          <span class="arcade-game-icon" aria-hidden="true">🔨</span>
+          <span class="arcade-game-name">Whack-a-Word</span>
+        </button>
+        <button type="button" class="arcade-game practice-mode" data-mode="sprint">
+          <span class="arcade-game-icon" aria-hidden="true">🏃</span>
+          <span class="arcade-game-name">Sprint</span>
+        </button>
+        <button type="button" class="arcade-game practice-mode" data-mode="tower">
+          <span class="arcade-game-icon" aria-hidden="true">🏗️</span>
+          <span class="arcade-game-name">Word Tower</span>
+        </button>
+        <button type="button" class="arcade-game practice-mode" data-mode="boss">
+          <span class="arcade-game-icon" aria-hidden="true">👾</span>
+          <span class="arcade-game-name">Boss Battle</span>
+        </button>
+        <button type="button" class="arcade-game practice-mode" data-mode="flash">
+          <span class="arcade-game-icon" aria-hidden="true">👆</span>
+          <span class="arcade-game-name">Flashcards</span>
+        </button>
+        <button type="button" class="arcade-game practice-mode" data-mode="odd">
+          <span class="arcade-game-icon" aria-hidden="true">🎯</span>
+          <span class="arcade-game-name">Odd One Out</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="arcade-screen">
+      <div class="arcade-screen-label"><span class="arcade-p1">P1</span> · NOW PLAYING</div>
+      <div class="arcade-screen-bezel">
+        <div class="practice-stage">
+  <div class="practice-panel" id="practicePanelDuo">
+    <div id="duoRoot" class="duo-root"></div>
+  </div>
+
+  <div class="practice-panel" id="practicePanelRain" hidden>
+    <div id="rainRoot" class="rain-root"></div>
+  </div>
+
+  <div class="practice-panel" id="practicePanelWhack" hidden>
+    <div id="whackRoot" class="whack-root"></div>
+  </div>
+
+  <div class="practice-panel" id="practicePanelSprint" hidden>
+    <div id="sprintRoot" class="sprint-root"></div>
+  </div>
+
+  <div class="practice-panel" id="practicePanelTower" hidden>
+    <div id="towerRoot" class="tower-root"></div>
+  </div>
+
+  <div class="practice-panel" id="practicePanelBoss" hidden>
+    <div id="bossRoot" class="boss-root"></div>
+  </div>
+
+  <div class="practice-panel" id="practicePanelFlash" hidden>
+    <div id="flashRoot" class="flash-root"></div>
+  </div>
+
+  <div class="practice-panel" id="practicePanelOdd" hidden>
+    <div id="oddRoot" class="odd-root"></div>
+  </div>
+
+    </div>
+      </div>
+    </div>
+
+    <div class="arcade-deck" aria-hidden="true">
+      <span class="arcade-deck-btn">▶ START</span>
+      <span class="arcade-deck-stick">🕹️</span>
+      <span class="arcade-deck-btn">A</span>
+      <span class="arcade-deck-btn">B</span>
+    </div>
+  </section>
+
+</div>
+  </div>
+
+</div>
+
+<script src="../lesson-progress.js"></script>
+<script src="../practice-mistakes.js"></script>
+<script src="../player-xp.js"></script>
+<script src="../duolingo.js"></script>
+<script src="../exercises/pl-1.js"></script>
+<script src="../vocab/pl-1.js"></script>
+<script src="../word-rain.js"></script>
+<script src="../whack-a-word.js"></script>
+<script src="../sentence-sprint.js"></script>
+<script src="../Korean/ko-roman.js"></script>
+<script src="../towers/pl-1.js"></script>
+<script src="../word-tower.js"></script>
+<script src="../boss-battle.js"></script>
+<script src="../swipe-flashcards.js"></script>
+<script src="../odd-out/pl-1.js"></script>
+<script src="../odd-one-out.js"></script>
+<script src="../practice-module.js"></script>
+<script>
+  PracticeModule.init({ lessonId: 'pl-1', lang: 'pl', totalExercises: 12 });
+</script>
+<script src="../font-size.js"></script>
+</body>
+</html>
