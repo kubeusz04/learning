@@ -1,10 +1,20 @@
 /**
  * Polish → Hangul pronunciation guide (approximate, for Korean learners).
+ *
+ * Mapping from user romanization chart. Letters without a Hangul match
+ * stay in Latin (w, z, sz, rz, ż, f, …).
+ *
  * Hangul is hidden until the user clicks a Polish word.
  */
 (function (global) {
   'use strict';
 
+  /*
+   * User chart (Hangul → Polish), applied in reverse here:
+   * ㅏa ㅑja ㅓo ㅕjo ㅗo ㅛjo ㅜu ㅠju ㅡy ㅣi ㅐe ㅔe
+   * ㅘwa ㅙwe ㅚoe ㅝło ㅞłe ㅟłi ㅢui
+   * ㅈdz ㅊcz  ·  no Hangul for w/z/sz → keep Latin
+   */
   const VOWEL = {
     a: 'ㅏ', e: 'ㅔ', i: 'ㅣ', o: 'ㅗ', u: 'ㅜ', y: 'ㅡ',
     ą: 'ㅗ', ę: 'ㅔ', ó: 'ㅜ'
@@ -23,9 +33,9 @@
     ['szcz', 'szㅊ'],
     ['sz', 'sz'],
     ['cz', 'ㅊ'],
-    ['dz', 'ㅈ'],
     ['dź', 'ㅈ'],
     ['dż', 'ㅈ'],
+    ['dz', 'ㅈ'],
     ['ch', 'ㅎ'],
     ['rz', 'rz'],
     ['cie', 'ㅊㅣㅔ'],
@@ -51,17 +61,23 @@
     ['ie', 'ㅖ'],
     ['io', 'ㅛ'],
     ['iu', 'ㅠ'],
-    ['wa', 'wㅏ'],
-    ['we', 'wㅔ'],
+    /* ㅘ/ㅙ exist in the chart as wa/we — use Hangul digraphs */
+    ['wa', 'ㅘ'],
+    ['we', 'ㅙ'],
     ['wi', 'wㅣ'],
     ['wo', 'wㅗ'],
     ['wu', 'wㅜ'],
+    ['wy', 'wㅡ'],
+    /* ㅝ/ㅞ/ㅟ = ło/łe/łi */
     ['ło', 'ㅝ'],
     ['łe', 'ㅞ'],
     ['łi', 'ㅟ'],
     ['ła', 'ㄹㅏ'],
     ['ły', 'ㄹㅡ'],
-    ['le', 'ㄹㅔ']
+    ['łu', 'ㄹㅜ'],
+    ['le', 'ㄹㅔ'],
+    ['ui', 'ㅢ'],
+    ['oe', 'ㅚ']
   ];
 
   const SINGLE = {
@@ -70,13 +86,19 @@
   };
 
   const POLISH_HINT = /[ąćęłńóśźż]/i;
+  const POLISH_CLUSTER = /szcz|sz|cz|rz|ch|dzi|dź|dż|dz|cie|się|nie|ią|ię|ść|ość|enie|ować|ać|ić/i;
   const ENGLISH_PHRASE = /^(I'm|I am|You are|Too |The |like this|so much|yes\b|too\b|I'm |sentence pattern|topic marker|you \(|\()/i;
+
+  const KNOWN_POLISH = /^(tak|taka|taki|takie|zbyt|za|się|sie|bardzo|właśnie|wlascie|naj|jest|jestem|jesteś|jestes|czy|czyż|czyz|dziś|dzis|pogoda|gorąco|goraco|zimno|idealna|idealny|idealne|przytul|przytula|przytulam|przytulę|przytule|przytulenie|przytulasa|tulę|tule|tulić|tulic|chcę|chce|mnie|cię|cie|skarb|skarbie|kotk|kotku|misi|misiu|kocham|człowiek|czlowiek|ludzie|niebo|ziemi|ziemia|wszechświat|wszechswiat|okropna|cudown|wspaniał|wspanial|szczęśliw|szczesliw|najszczęśliwsz|najszczesliwsz|cieszę|ciesze|czeszę|czesze|partykuł|partykul|niesamowit|piękn|piekn|najlepsz|najbardziej|świat|swiat|świąt|ty|ja|na|ten|ta|to|tego|tej|tę|te|mam|lubię|lubie|boję|boje|film|filmu|kot|chłopak|chlopak|dziewczyna|dziecko|książk|ksiazk|noc|mamy|księżyc|ksiezyc|naprawdę|naprawde|wyjątkowo|wyjatkowo|cudowną|cudowna|świecie|swiecie|dlatego|bez|do|od|dla|widzę|widze|rozumiem|miłość|milosc|co)$/i;
 
   let clickBound = false;
 
   function isPolishWord(word) {
+    if (!word) return false;
     if (POLISH_HINT.test(word)) return true;
-    return /^(tak|taka|taki|takie|zbyt|za|się|sie|bardzo|właśnie|wlascie|naj|jest|jestem|jesteś|jestes|czy|dziś|dzis|pogoda|gorąco|goraco|zimno|idealna|idealny|idealne|przytul|tulę|tule|chcę|chce|mnie|cię|cie|skarb|kotk|misi|kocham|człowiek|czlowiek|ludzie|niebo|ziemi|wszechświat|okropna|cudown|wspaniał|wspanial|szczęśliw|szczesliw|cieszę|ciesze|czeszę|czesze|partykuł|partykul|niesamowit|piękn|piekn|najlepsz|najbardziej|wszechświat|wszechswiat|świat|swiat|ty|ja|na)$/i.test(word);
+    if (POLISH_CLUSTER.test(word)) return true;
+    if (KNOWN_POLISH.test(word)) return true;
+    return false;
   }
 
   function isPolishText(text) {
@@ -106,28 +128,19 @@
       const ch = s[i];
       const next = s[i + 1] || '';
 
+      /* hard c (no Hangul ts letter in chart) — keep Latin, except soft ce/ci/cę handled above via digraphs/ci */
       if (ch === 'c' && (next === 'e' || next === 'i' || next === 'ę')) {
-        if (next === 'i') {
-          out += 'c';
-          i++;
-          continue;
-        }
         if (next === 'ę') {
-          out += 'ㅊ';
-          i++;
+          out += 'ㅊㅔ';
+          i += 2;
           continue;
         }
-        out += 'c';
-        i++;
-        continue;
-      }
-      if (ch === 'c' && (next === 'a' || next === 'o' || next === 'u' || next === 'y')) {
         out += 'c';
         i++;
         continue;
       }
       if (ch === 'c') {
-        out += 'ㄱ';
+        out += 'c';
         i++;
         continue;
       }
@@ -168,7 +181,9 @@
         const parts = word.split('/');
         return parts.map((part) => {
           const trimmed = part.trim();
-          if (!trimmed || (!forceAll && !isPolishWord(trimmed))) return part;
+          if (!trimmed) return part;
+          if (!forceAll && !isPolishWord(trimmed)) return part;
+          if (ENGLISH_PHRASE.test(trimmed)) return part;
           const h = polishWordToHangul(trimmed);
           if (!h) return part;
           return wrapWord(part, h);
@@ -242,7 +257,8 @@
       'table.theory-table td.pl',
       'span.pl',
       '.example-box .pl',
-      '.theory-rules .pl'
+      '.theory-rules .pl',
+      '.word-chip'
     ];
 
     forceSelectors.forEach((sel) => {
@@ -253,8 +269,41 @@
       if (isPolishText(el.textContent)) annotateElement(el, true);
     });
 
-    document.querySelectorAll('.gender-chip strong, .gender-chip em, .summary-item em, .explain-box em, .explain-compare em, .fill-sentence em, .word-chip').forEach((el) => {
-      annotateElement(el, el.classList.contains('word-chip'));
+    const softSelectors = [
+      '.gender-chip strong',
+      '.gender-chip em',
+      '.summary-item em',
+      '.summary-item strong',
+      '.explain-box em',
+      '.explain-box strong',
+      '.explain-compare em',
+      '.explain-compare strong',
+      '.fill-sentence em',
+      '.bonus-fact strong',
+      '.bonus-fact em',
+      '.sie-examples em',
+      '.sie-examples strong',
+      '.lesson-block-title em',
+      '.callout em',
+      '.callout strong',
+      '.muted em',
+      'h3 em',
+      'li em'
+    ];
+
+    softSelectors.forEach((sel) => {
+      document.querySelectorAll(sel).forEach((el) => {
+        if (el.dataset.plHangulDone) return;
+        if (el.closest('.pl-word')) return;
+        annotateElement(el, false);
+      });
+    });
+
+    document.querySelectorAll('em, strong').forEach((el) => {
+      if (el.dataset.plHangulDone) return;
+      if (el.closest('.pl-word')) return;
+      if (!isPolishText(el.textContent)) return;
+      annotateElement(el, false);
     });
   }
 
