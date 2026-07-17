@@ -23,5 +23,16 @@ window.LESSON_VOCAB = [
   { pl: "ludzie", en: "people (plural only)", ko: "사람들" },
   { pl: "niebo", en: "sky / heaven", ko: "하늘" },
   { pl: "ziemia", en: "earth / ground", ko: "땅" },
-  { pl: "wszechświat", en: "universe", ko: "우주" }
+  { pl: "wszechświat", en: "universe", ko: "우주" },
+  { pl: "księżyc", en: "moon", ko: "달" },
+  { pl: "Księżyc jest dziś wyjątkowo piękny, czyż nie?", en: "The moon is exceptionally beautiful today, isn't it?", ko: "오늘 달이 유난히 아름답지 않아?" },
+  { pl: "wyjątkowo", en: "exceptionally", ko: "유난히 / 특별히" },
+  { pl: "czyż nie", en: "isn't it? / right? (tag)", ko: "~지 않아?" },
+  { pl: "Księżyc jest dziś naprawdę piękny!", en: "The moon is really beautiful today!", ko: "오늘 달이 정말 아름다워!" },
+  { pl: "naprawdę", en: "really / truly", ko: "정말" },
+  { pl: "świat", en: "world", ko: "세상" },
+  { pl: "świąt", en: "(of) holidays — NOT world!", ko: "명절 (세상 아님!)" },
+  { pl: "Och, jak cudowną noc dziś mamy!", en: "Oh, what a wonderful night we have today!", ko: "오, 오늘 정말 멋진 밤이야!" },
+  { pl: "cudowna noc", en: "wonderful night", ko: "멋진 / 환상적인 밤" },
+  { pl: "dziś", en: "today", ko: "오늘" }
 ];

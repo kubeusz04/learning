@@ -1,0 +1,23 @@
+window.LESSON_VOCAB = [
+  { pl: "ten", en: "this / that (masculine)", ko: "이 / 그 (남성)" },
+  { pl: "ta", en: "this / that (feminine)", ko: "이 / 그 (여성)" },
+  { pl: "to", en: "this / that (neuter) · this is / it", ko: "이 / 그 (중성) · 이것" },
+  { pl: "tego", en: "of this / that (genitive of ten or to)", ko: "이것의 / 그것의 (남·중)" },
+  { pl: "tej", en: "of this / that (feminine genitive)", ko: "이것의 (여성)" },
+  { pl: "tę", en: "this / that (feminine accusative)", ko: "이것을 (여성)" },
+  { pl: "To jest…", en: "This is… / It is…", ko: "이건… / ~이야" },
+  { pl: "Co to?", en: "What's that?", ko: "이게 뭐야?" },
+  { pl: "Nie lubię tego.", en: "I don't like this.", ko: "이거 안 좋아해." },
+  { pl: "Nie ma tego.", en: "There isn't that.", ko: "그런 거 없어." },
+  { pl: "Boję się tego.", en: "I'm afraid of that.", ko: "그게 무서워." },
+  { pl: "do tego", en: "to this / for this", ko: "이것에 / 게다가" },
+  { pl: "bez tego", en: "without this", ko: "이것 없이" },
+  { pl: "ten chłopak", en: "this guy / boy", ko: "이 남자애" },
+  { pl: "ta dziewczyna", en: "this girl", ko: "이 여자애" },
+  { pl: "to dziecko", en: "this child", ko: "이 아이" },
+  { pl: "Jestem najszczęśliwszy na świecie, że cię mam!", en: "I'm the happiest in the world that I have you!", ko: "세상에서 제일 행복해, 네가 있어서!" },
+  { pl: "najszczęśliwszy", en: "the happiest (masculine)", ko: "가장 행복한 (남)" },
+  { pl: "najszczęśliwsza", en: "the happiest (feminine)", ko: "가장 행복한 (여)" },
+  { pl: "na świecie", en: "in the world", ko: "세상에서" },
+  { pl: "że cię mam", en: "that I have you", ko: "네가 있어서" }
+];

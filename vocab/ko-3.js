@@ -9,5 +9,13 @@ window.LESSON_VOCAB = [
   { ko: "나", en: "I", pl: "ja" },
   { ko: "나는", en: "I (topic)", pl: "ja" },
   { ko: "-고 있어", en: "am …ing (ongoing)", pl: "właśnie … (czynność trwa)" },
-  { ko: "안아주다", en: "to hug someone (for them)", pl: "przytulać (kogoś)" }
+  { ko: "안아주다", en: "to hug someone (for them)", pl: "przytulać (kogoś)" },
+  { ko: "보다", en: "to see / watch / look", pl: "widzieć / patrzeć" },
+  { ko: "별로", en: "not really / not particularly", pl: "niezbyt / średnio" },
+  { ko: "별로네", en: "not great / meh / nothing special", pl: "no cóż / średnio / nie za bardzo" },
+  { ko: "다녀왔어", en: "I'm back (casual) — like ただいま", pl: "wróciłem / już jestem" },
+  { ko: "다녀왔습니다", en: "I'm back (formal)", pl: "wróciłem (formalnie)" },
+  { ko: "다녀왔어?", en: "Welcome back? (casual) — like おかえり", pl: "wróciłeś?" },
+  { ko: "다녀오셨습니까", en: "Welcome back? (formal)", pl: "wrócił Pan/Pani?" },
+  { ko: "다녀오다", en: "to go out and come back", pl: "wyjść i wrócić" }
 ];
