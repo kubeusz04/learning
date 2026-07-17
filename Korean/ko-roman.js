@@ -12,12 +12,12 @@
     'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
   ];
 
-  /* Vowels — inverse of pl-hangul VOWEL + DIGRAPHS (ja, jo, ju, ła, ło, y→ㅡ, …) */
+  /* Vowels — user chart (Hangul → Polish) */
   const VOWEL = {
     'ㅏ': 'a', 'ㅐ': 'e', 'ㅑ': 'ja', 'ㅒ': 'je', 'ㅓ': 'o', 'ㅔ': 'e',
-    'ㅕ': 'jo', 'ㅖ': 'je', 'ㅗ': 'o', 'ㅘ': 'ła', 'ㅙ': 'we', 'ㅚ': 'we',
-    'ㅛ': 'jo', 'ㅜ': 'u', 'ㅝ': 'ło', 'ㅞ': 'we', 'ㅟ': 'wi', 'ㅠ': 'ju',
-    'ㅡ': 'y', 'ㅢ': 'yj', 'ㅣ': 'i'
+    'ㅕ': 'jo', 'ㅖ': 'je', 'ㅗ': 'o', 'ㅘ': 'wa', 'ㅙ': 'we', 'ㅚ': 'oe',
+    'ㅛ': 'jo', 'ㅜ': 'u', 'ㅝ': 'ło', 'ㅞ': 'łe', 'ㅟ': 'łi', 'ㅠ': 'ju',
+    'ㅡ': 'y', 'ㅢ': 'ui', 'ㅣ': 'i'
   };
 
   /* Consonants — inverse of pl-hangul CONSON + cz/dz/ch → ㅊ/ㅈ/ㅎ */
@@ -104,8 +104,14 @@
   };
 
   const POLISH_IV = [
-    ['ła', 'ㅇ', 'ㅘ'],
+    ['wa', 'ㅇ', 'ㅘ'],
+    ['we', 'ㅇ', 'ㅙ'],
+    ['oe', 'ㅇ', 'ㅚ'],
     ['ło', 'ㅇ', 'ㅝ'],
+    ['łe', 'ㅇ', 'ㅞ'],
+    ['łi', 'ㅇ', 'ㅟ'],
+    ['ui', 'ㅇ', 'ㅢ'],
+    ['ła', 'ㄹ', 'ㅏ'],
     ['czwe', 'ㅊ', 'ㅚ'],
     ['he', 'ㅎ', 'ㅐ'],
     ['de', 'ㄷ', 'ㅐ'],
@@ -126,14 +132,15 @@
   ];
 
   const POLISH_VOWEL = [
-    ['yj', 'ㅢ'], ['ju', 'ㅠ'], ['jo', 'ㅕ'], ['ja', 'ㅑ'], ['je', 'ㅖ'],
-    ['ła', 'ㅘ'], ['ło', 'ㅝ'],
+    ['ui', 'ㅢ'], ['ju', 'ㅠ'], ['jo', 'ㅕ'], ['ja', 'ㅑ'], ['je', 'ㅖ'],
+    ['wa', 'ㅘ'], ['we', 'ㅙ'], ['oe', 'ㅚ'],
+    ['ło', 'ㅝ'], ['łe', 'ㅞ'], ['łi', 'ㅟ'],
     ['ą', 'ㅗ'], ['ę', 'ㅔ'], ['ó', 'ㅜ'],
     ['a', 'ㅏ'], ['e', 'ㅔ'], ['i', 'ㅣ'], ['o', 'ㅓ'], ['u', 'ㅜ'], ['y', 'ㅡ']
   ];
 
-  /* lone w + e/i/u = Latin w + vowel (no w in Hangul); lone j = ㅣ (mirrors pl-hangul) */
-  const POLISH_W_LATIN = { e: 'ㅔ', i: 'ㅣ', u: 'ㅜ' };
+  /* lone w + vowel = Latin w (no Hangul for w); lone j = ㅣ (mirrors pl-hangul) */
+  const POLISH_W_LATIN = { a: 'ㅏ', e: 'ㅔ', i: 'ㅣ', o: 'ㅗ', u: 'ㅜ', y: 'ㅡ' };
   const POLISH_J_VOWEL = new Set(['a', 'e', 'o', 'u']);
 
   /* t/d = ㄷ batchim; l/r = ㄹ batchim (forward: ㄷ→t, ㄹ→l; aliases accepted on input) */

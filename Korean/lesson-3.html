@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../whiteboard.css">
   <link rel="stylesheet" href="../player-xp.css">
   <link rel="stylesheet" href="../practice.css">
+  <link rel="stylesheet" href="../lesson-extras.css">
   <link rel="stylesheet" href="../korean.css">
 </head>
 <body>
@@ -57,6 +58,18 @@
         <span class="summary-num">5</span>
         <div><strong>Full line:</strong> <em class="ko">나는 널 꽉 안고 있어</em> = I'm hugging you tight.</div>
       </div>
+      <div class="summary-item">
+        <span class="summary-num">6</span>
+        <div><strong>See:</strong> <em class="ko">보다</em> = to see / watch / look.</div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-num">7</span>
+        <div><strong>Meh:</strong> <em class="ko">별로네</em> = not great / nothing special.</div>
+      </div>
+      <div class="summary-item">
+        <span class="summary-num">8</span>
+        <div><strong>I'm back / welcome back:</strong> <em class="ko">다녀왔어</em> · <em class="ko">다녀왔어?</em> — like Japanese <em>ただいま</em> / <em>おかえり</em>.</div>
+      </div>
     </div>
 
     <div class="pattern-box">
@@ -73,6 +86,37 @@
       <div class="gender-chip f" style="border-color:var(--marker-blue);color:var(--marker-blue)"><strong class="ko">안다</strong><br>verb · to hug</div>
     </div>
     <p class="muted" style="margin-top:.5rem"><em class="ko">꽉</em> = tightly · <em class="ko">널</em> = you (object, casual)</p>
+
+    <h3>See — <span class="ko">보다</span></h3>
+    <div class="explain-box">
+      <p><em class="ko">보다</em> = to see · to watch · to look (at something)</p>
+      <p class="muted" style="margin-bottom:0">Basic verb from class — same idea as English “see / look / watch”.</p>
+    </div>
+
+    <h3>Not great — <span class="ko">별로네</span></h3>
+    <div class="bonus-fact">
+      <strong class="ko">별로네</strong>
+      <p style="margin:.35rem 0 0">“Not great.” / “Meh.” / “Nothing special.”</p>
+      <p class="muted" style="margin:.25rem 0 0"><em class="ko">별로</em> = not really · not particularly · <em class="ko">-네</em> = “I see / so that's how it is”</p>
+    </div>
+
+    <h3>I'm back &amp; welcome back — <em>ただいま</em> / <em>おかえり</em></h3>
+    <p class="lesson-lead muted">From chat with Yoon (14 Jul) — Korean homecoming phrases paired with Japanese.</p>
+    <div class="explain-compare">
+      <div>
+        <em>ただいま</em> → <em class="ko">다녀왔어</em><br>
+        <span class="muted">I'm back · casual</span><br>
+        <em class="ko">다녀왔습니다</em><br>
+        <span class="muted">I'm back · formal</span>
+      </div>
+      <div>
+        <em>おかえり</em> → <em class="ko">다녀왔어?</em><br>
+        <span class="muted">Welcome back? · casual</span><br>
+        <em class="ko">다녀오셨습니까</em><br>
+        <span class="muted">Welcome back? · formal</span>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:.5rem"><em class="ko">다녀오다</em> = to go out and come back · statement when <strong>you</strong> arrive · question when welcoming <strong>someone else</strong>.</p>
   </section>
 
   <section id="examples">
@@ -113,6 +157,30 @@
         <div class="example-en">tightly</div>
         <div class="example-pl ko">꽉</div>
         <div class="example-hint">bardzo mocno / mocno</div>
+      </div>
+    </div>
+    <div class="example-pair">
+      <div class="example-card" onclick="reveal(this)">
+        <div class="example-en">to see / watch / look</div>
+        <div class="example-pl ko">보다</div>
+        <div class="example-hint">see = 보다</div>
+      </div>
+      <div class="example-card" onclick="reveal(this)">
+        <div class="example-en">Not great. / Meh.</div>
+        <div class="example-pl ko">별로네</div>
+        <div class="example-hint">별로 = not really</div>
+      </div>
+    </div>
+    <div class="example-pair">
+      <div class="example-card" onclick="reveal(this)">
+        <div class="example-en">I'm back. (ただいま)</div>
+        <div class="example-pl ko">다녀왔어 / 다녀왔습니다</div>
+        <div class="example-hint">casual · formal</div>
+      </div>
+      <div class="example-card" onclick="reveal(this)">
+        <div class="example-en">Welcome back? (おかえり)</div>
+        <div class="example-pl ko">다녀왔어? / 다녀오셨습니까</div>
+        <div class="example-hint">casual · formal</div>
       </div>
     </div>
     <p class="tap-hint">👆 From class with Yoon</p>
@@ -168,6 +236,14 @@
     { ko: "나는", en: "I (topic)", pl: "ja" },
     { ko: "-고 있어", en: "am …ing (ongoing)", pl: "właśnie … (czynność trwa)" },
     { ko: "안아주다", en: "to hug someone (for them)", pl: "przytulać (kogoś)" },
+    { ko: "보다", en: "to see / watch / look", pl: "widzieć / patrzeć" },
+    { ko: "별로", en: "not really / not particularly", pl: "niezbyt / średnio" },
+    { ko: "별로네", en: "not great / meh / nothing special", pl: "no cóż / średnio / nie za bardzo" },
+    { ko: "다녀왔어", en: "I'm back (casual) — like ただいま", pl: "wróciłem / już jestem" },
+    { ko: "다녀왔습니다", en: "I'm back (formal)", pl: "wróciłem (formalnie)" },
+    { ko: "다녀왔어?", en: "Welcome back? (casual) — like おかえり", pl: "wróciłeś?" },
+    { ko: "다녀오셨습니까", en: "Welcome back? (formal)", pl: "wrócił Pan/Pani?" },
+    { ko: "다녀오다", en: "to go out and come back", pl: "wyjść i wrócić" },
   ];
 
 
